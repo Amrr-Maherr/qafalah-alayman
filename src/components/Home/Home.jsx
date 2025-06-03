@@ -13,22 +13,27 @@ function Home() {
     {
       title: "حجز ليموزين للمطار ",
       icon: imgOne,
+      link: "",
     },
     {
       title: "عمره بالحافله",
       icon: imgTwo,
+      link: "",
     },
     {
       title: "حجز  طيران و فنادق مكة و المدينة",
       icon: imgThree,
+      link: "",
     },
     {
       title: "حجز فنادق مكة و المدينة",
       icon: imgFour,
+      link: "",
     },
     {
       title: "سله المتجر الالكتروني",
       icon: imgFive,
+      link: "",
     },
   ];
   return (
@@ -47,26 +52,29 @@ function Home() {
         <Logo />
       </nav>
       {/* home links */}
-      <Link to="/">
-        <div className="over-lay absolute inset-0 w-full h-full bg-black/70 flex items-center justify-center flex-wrap">
+
+      <div className="over-lay absolute inset-0 w-full h-full bg-black/70 flex items-center justify-center flex-wrap">
+        <div className='flex items-center justify-around w-full flex-wrap'>
           {Data.map((item, index) => (
-            <div
-              key={index}
-              className="w-full max-w-[247px] h-auto mx-auto text-center flex items-center justify-center flex-col gap-4 relative z-50 
+            <Link to={item.link}>
+              <div
+                key={index}
+                className="w-full max-w-[247px] h-auto mx-auto text-center flex items-center justify-center flex-col gap-4 relative z-50 
                hover:bg-[#FBF5EA5C] rounded-[20px] transition duration-300 p-4 md:p-6"
-            >
-              <img
-                src={item.icon}
-                className="w-16 md:w-20 h-16 md:h-20 object-contain"
-                alt={item.title}
-              />
-              <h3 className="text-xl md:text-2xl font-[700] text-[#FBF5EA]">
-                {item.title}
-              </h3>
-            </div>
+              >
+                <img
+                  src={item.icon}
+                  className="w-16 md:w-20 h-16 md:h-20 object-contain"
+                  alt={item.title}
+                />
+                <h3 className="text-xl md:text-2xl font-[700] text-[#FBF5EA]">
+                  {item.title}
+                </h3>
+              </div>
+            </Link>
           ))}
         </div>
-      </Link>
+      </div>
     </section>
   );
 }
