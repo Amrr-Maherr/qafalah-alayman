@@ -7,6 +7,7 @@ import imgThree from "../../assets/fa_plane.png"
 import imgFour from "../../assets/fluent-emoji-high-contrast_hotel.png"
 import imgFive from "../../assets/wpf_shopping-cart.png"
 import { Link } from 'react-router-dom';
+import HomeBox from './HomeBox';
 function Home() {
   // home data
   const Data = [
@@ -54,24 +55,11 @@ function Home() {
       {/* home links */}
 
       <div className="over-lay absolute inset-0 w-full h-full bg-black/70 flex items-center justify-center flex-wrap">
-        <div className='flex items-center justify-around w-full flex-wrap'>
-          {Data.map((item, index) => (
-            <Link to={item.link}>
-              <div
-                key={index}
-                className="w-full max-w-[247px] h-auto mx-auto text-center flex items-center justify-center flex-col gap-4 relative z-50 
-               hover:bg-[#FBF5EA5C] rounded-[20px] transition duration-300 p-4 md:p-6"
-              >
-                <img
-                  src={item.icon}
-                  className="w-16 md:w-20 h-16 md:h-20 object-contain"
-                  alt={item.title}
-                />
-                <h3 className="text-xl md:text-2xl font-[700] text-[#FBF5EA]">
-                  {item.title}
-                </h3>
-              </div>
-            </Link>
+        <div className="flex items-center justify-around w-full flex-wrap">
+          {Data.map((item,index) => (
+            <>
+              <HomeBox item={item} />
+            </>
           ))}
         </div>
       </div>
