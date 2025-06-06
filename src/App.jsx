@@ -5,8 +5,6 @@ import Home from './components/Home/Home'
 import NotFound from './components/NotFound/NotFound';
 import Contact from './components/Contact/Contact';
 import AboutUs from './components/AboutUs/AboutUs';
-import Register from './components/Register/Register';
-import Login from './components/Login/Login';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
