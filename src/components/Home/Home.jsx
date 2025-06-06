@@ -1,13 +1,11 @@
-import React from 'react'
-import Logo from '../Logo';
 import Image from "../../assets/293621.jpg"
 import imgOne from "../../assets/Group.png"
 import imgTwo from "../../assets/bus 1.png"
 import imgThree from "../../assets/fa_plane.png"
 import imgFour from "../../assets/fluent-emoji-high-contrast_hotel.png"
 import imgFive from "../../assets/wpf_shopping-cart.png"
-import { Link } from 'react-router-dom';
 import HomeBox from './HomeBox';
+import HomeNav from './HomeNav';
 function Home() {
   // home data
   const Data = [
@@ -48,10 +46,7 @@ function Home() {
       }}
     >
       {/* home title */}
-      <nav className="flex items-center justify-end p-10 gap-[14px] z-20 relative hidden md:flex">
-        <h3 className="text-[28px] font-bold text-white">الرئيسيه</h3>
-        <Logo />
-      </nav>
+      <HomeNav/>
       {/* home links */}
 
       <div className="over-lay absolute inset-0 w-full h-full bg-black/70 flex items-center justify-center flex-wrap">
