@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "../Navbar/Navbar";
-
+import { Plane } from "lucide-react";
 export default function HeroSection({
   BackGroundImage,
   title,
@@ -41,12 +41,10 @@ export default function HeroSection({
           </motion.p>
 
           <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="bg-[#B38124] text-sm sm:text-base md:text-lg font-semibold text-white px-8 py-3 rounded-full w-fit"
+            className="flex items-center gap-2 text-sm sm:text-base md:text-lg font-semibold bg-[#B38124] text-white px-8 py-3 rounded-full w-fit"
           >
             {buttonText}
+            <Plane size={20} />
           </motion.button>
         </div>
       </section>
