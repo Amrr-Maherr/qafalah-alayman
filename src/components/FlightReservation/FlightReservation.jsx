@@ -1,4 +1,4 @@
-import Image from "../../assets/home-image.png";
+import Image from "../../assets/fly.png";
 import HeroSection from "../Herocomponents/HeroSection";
 export default function FlightReservation() {
     return (

@@ -1,4 +1,4 @@
-import Image from "../../assets/home-image.png";
+import Image from "../../assets/hotel.png";
 import HeroSection from "../Herocomponents/HeroSection";
 export default function HotelReservations() {
   return (

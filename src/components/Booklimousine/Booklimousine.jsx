@@ -1,5 +1,5 @@
 import HeroSection from "../Herocomponents/HeroSection";
-import Image from "../../assets/home-image.png"
+import Image from "../../assets/lemo.png"
 export default function Booklimousine() {
     return (
       <>
