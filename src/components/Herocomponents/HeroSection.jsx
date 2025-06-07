@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Navbar from "../Navbar/Navbar";
 
 export default function HeroSection({
   BackGroundImage,
@@ -9,7 +10,7 @@ export default function HeroSection({
   return (
     <>
       <section
-        className="min-h-screen relative flex items-center justify-center"
+        className="min-h-screen relative flex items-center justify-center relative "
         style={{
           backgroundImage: `url(${BackGroundImage})`,
           backgroundRepeat: "no-repeat",
@@ -17,6 +18,9 @@ export default function HeroSection({
           backgroundPosition: "center",
         }}
       >
+        <div className="absolute top-0 left-0 right-0 z-10">
+          <Navbar />
+        </div>
         <div className="absolute inset-0 bg-black/70 flex items-center justify-center flex-col px-4 text-center">
           <motion.h2
             initial={{ opacity: 0, y: -50 }}
