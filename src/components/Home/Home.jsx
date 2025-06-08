@@ -1,10 +1,12 @@
 import Image from "../../assets/293621.jpg"
 import HeroSection from "../Herocomponents/HeroSection";
+import NewsTicker from "../NewsTicker";
 import HomeNav from './HomeNav';
 import HomeOverLay from "./HomeOverLay"
 function Home() {
   return (
     <>
+      <NewsTicker/>
       <section
         className="min-h-screen relative"
         style={{
