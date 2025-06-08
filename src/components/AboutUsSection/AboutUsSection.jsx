@@ -1,7 +1,4 @@
-// AboutUsSection.js
-
 import AboutUsBox from "./AboutUsBox";
-// قم باستيراد الأيقونات التي ستستخدمها
 import { FaTag, FaGlobeAmericas, FaRocket, FaHeadset } from "react-icons/fa";
 
 export default function AboutUsSection() {
