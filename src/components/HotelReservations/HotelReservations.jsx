@@ -1,4 +1,5 @@
 import Image from "../../assets/hotel.png";
+import AboutUsSection from "../AboutUsSection/AboutUsSection";
 import HeroSection from "../Herocomponents/HeroSection";
 import HotelForm from "./HotelForm";
 
@@ -11,7 +12,8 @@ export default function HotelReservations() {
         description="خيارات متنوعة قريبة من الحرم تناسب جميع الميزانيات."
         buttonText="اكتشف الآن"
       />
-      <HotelForm/>
+      <HotelForm />
+      <AboutUsSection/>
     </>
   );
 }
