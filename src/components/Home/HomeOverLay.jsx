@@ -11,11 +11,7 @@ export default function HomeOverLay() {
   const Data = [
     { title: "حجز ليموزين للمطار", icon: imgOne, link: "/limousine" },
     { title: "عمره بالحافله", icon: imgTwo, link: "" },
-    {
-      title: "حجز طيران و فنادق مكة و المدينة",
-      icon: imgThree,
-      link: "/Flight",
-    },
+    {title: "حجز طيران و فنادق مكة و المدينة",icon: imgThree,link: "/Flight",},
     { title: "حجز فنادق مكة و المدينة", icon: imgFour, link: "/Hotel" },
     { title: "سله المتجر الالكتروني", icon: imgFive, link: "" },
   ];
