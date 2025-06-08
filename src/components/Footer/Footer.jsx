@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 function Footer() {
   return (
     <motion.div
-      className="footer py-4 md:py-6 bg-[#E6E6E6]"
+      className="footer py-4 md:py-6 bg-[#FBF5EA]"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -26,7 +26,7 @@ function Footer() {
           viewport={{ once: true }}
         >
           <div className="footerInfo">
-            <h2 className="text-[24px] leading-[150%] font-bold ">
+            <h2 className="text-[24px] leading-[150%] font-bold text-[#B38124]">
               سجل دخولك الي موقعنا...
             </h2>
             <p className="text-[#4D4D4D] text-[18px] font-normal text-end">
@@ -41,7 +41,7 @@ function Footer() {
               type="email"
               placeholder="أدخل ايميلك"
             />
-            <button className="footerSubscribeBtn py-[10px] px-[24px] rounded-[60px] bg-black text-white">
+            <button className="footerSubscribeBtn py-[10px] px-[24px] rounded-[60px] bg-[#B38124] text-white">
               <a href="#">أشترك الان</a>
             </button>
           </div>
@@ -57,7 +57,7 @@ function Footer() {
           viewport={{ once: true }}
         >
           <div className="rightMain md:flex-row flex-col w-full md:w-1/3">
-            <div className="flex md:flex-row flex-col items-end gap-3">
+            <div className="flex md:flex-row md:items-end flex-col items-center gap-3">
               <img
                 className="w-[92px] h-[140px]"
                 src={footerLogo}
@@ -68,7 +68,7 @@ function Footer() {
                 تناسب ميزانيتك وأسلوب حياتك
               </p>
             </div>
-            <div className="footerSocialMedia my-3 flex justify-center md:justify-start items-center gap-1">
+            <div className="footerSocialMedia text-[#B38124] my-3 flex justify-center md:justify-start items-center gap-1">
               <a href="#" target="_blank">
                 <FaFacebook size={24} />
               </a>
@@ -88,7 +88,7 @@ function Footer() {
             >
               <button
                 dir="ltr"
-                className="footerContactBtn rounded-[60px] py-[10px] px-[24px] bg-black text-white flex items-center mt-[32px] gap-1"
+                className="footerContactBtn rounded-[60px] py-[10px] px-[24px] bg-[#B38124] text-white flex items-center mt-[32px] gap-1"
               >
                 اتصل بنا{" "}
                 <PiPhoneCall
@@ -102,7 +102,7 @@ function Footer() {
           {/* روابط */}
           <div className="footerLinks w-full md:w-2/3 flex md:flex-row flex-col gap-5 md:gap-0 items-start justify-between">
             <div className="companyLinks text-center md:w-1/3 w-full">
-              <h2 className="text-[18px] font-bold">الشركه</h2>
+              <h2 className="text-[18px] font-bold text-[#B38124]">الشركه</h2>
               <ul className="list-none">
                 <li>
                   <Link className="text-[#4D4D4D] text-[16px]" to={"/Flight"}>
@@ -136,7 +136,7 @@ function Footer() {
             </div>
 
             <div className="policies text-center md:w-1/3 w-full">
-              <h2 className="text-[18px] font-bold">السياسات</h2>
+              <h2 className="text-[18px] font-bold text-[#B38124]">السياسات</h2>
               <ul className="list-none">
                 <li>
                   <a
@@ -158,7 +158,9 @@ function Footer() {
             </div>
 
             <div className="support text-center md:w-1/3 w-full">
-              <h2 className="text-[18px] font-bold">المساعدة والدعم</h2>
+              <h2 className="text-[18px] font-bold text-[#B38124]">
+                المساعدة والدعم
+              </h2>
               <ul className="list-none">
                 <li>
                   <a
