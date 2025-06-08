@@ -1,30 +1,32 @@
 import HeroSection from "../Herocomponents/HeroSection";
 import Image from "../../assets/lemo.png";
 import AboutUsSection from "../AboutUsSection/AboutUsSection";
-import { FaTag, FaGlobeAmericas, FaRocket, FaHeadset } from "react-icons/fa";
+import { FaCar, FaClock, FaUserTie, FaShieldAlt } from "react-icons/fa";
+
 export default function Booklimousine() {
   const aboutUsData = [
-      {
-        icon: <FaTag />,
-        title: "عروض لا تقبل المنافسة",
-        text: "نقارن آلاف الرحلات والفنادق لنضمن لك الحصول على أفضل سعر ممكن. وفر أكثر مع كل حجز.",
-      },
-      {
-        icon: <FaGlobeAmericas />,
-        title: "خيارات واسعة",
-        text: "شبكتنا الواسعة من شركات الطيران والفنادق حول العالم تمنحك حرية الاختيار بين آلاف الوجهات.",
-      },
-      {
-        icon: <FaRocket />,
-        title: "حجز سهل وسريع",
-        text: "منصة مصممة لتكون سهلة الاستخدام، يمكنك إتمام حجزك في خطوات بسيطة وخلال دقائق معدودة.",
-      },
-      {
-        icon: <FaHeadset />,
-        title: "دعم فني 24/7",
-        text: "فريق الدعم لدينا متاح على مدار الساعة لمساعدتك في كل خطوة، من الاستفسار وحتى ما بعد الحجز.",
-      },
-    ];
+    {
+      icon: <FaCar />,
+      title: "أسعار تنافسية",
+      text: "خدمة ليموزين فاخرة بأسعار مناسبة وواضحة.",
+    },
+    {
+      icon: <FaClock />,
+      title: "تغطية جميع المدن",
+      text: "نخدم كل مناطق المملكة بسيارات حديثة.",
+    },
+    {
+      icon: <FaUserTie />,
+      title: "حجز سريع",
+      text: "احجز خلال دقائق وسنلبي طلبك فورًا.",
+    },
+    {
+      icon: <FaShieldAlt />,
+      title: "دعم 24/7",
+      text: "فريقنا جاهز لمساعدتك في أي وقت.",
+    },
+  ];
+
   return (
     <>
       <HeroSection
@@ -36,7 +38,7 @@ export default function Booklimousine() {
       <AboutUsSection
         data={aboutUsData}
         title="باقة من أفضل الخدمات"
-        description="خدمات حجز رحلات الباص والطيران فتمتع بإقامة مميزة في أفضل فنادق المملكة"
+        description="خدمات ليموزين توفر الراحة والرفاهية في تنقلاتك"
       />
     </>
   );

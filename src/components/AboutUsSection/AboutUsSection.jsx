@@ -9,7 +9,7 @@ export default function AboutUsSection({ data, title, description,bgColor }) {
           <p className="mt-4 text-lg text-gray-600">{description}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
           {data?.map((item, index) => (
             <AboutUsBox
               key={index}

@@ -1,9 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
-import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import NewsTicker from "../NewsTicker";
-import emailjs from "@emailjs/browser"; // تأكد تنصيب الحزمة: npm i @emailjs/browser
+import emailjs from "@emailjs/browser";
 import AboutUsSection from "../AboutUsSection/AboutUsSection";
 import HeroSection from "../Herocomponents/HeroSection";
 import Image from "../../assets/contact.png";
@@ -17,8 +16,22 @@ const contactValidationSchema = Yup.object({
     .min(10, "يجب أن تكون الرسالة 10 أحرف على الأقل")
     .required("الرسالة مطلوبة"),
 });
-
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 export default function ContactUsPage() {
+  const aboutUsData = [
+    {
+      icon: <FaEnvelope className="text-amber-500 " />,
+      text: "Qafalah-alayman@gmail.com",
+    },
+    {
+      icon: <FaMapMarkerAlt className="text-amber-500 " />,
+      text: "الرياض، المملكة العربية السعودية",
+    },
+    {
+      icon: <FaPhone className="text-amber-500" />,
+      text: "+966 11 234 5678",
+    },
+  ];
   return (
     <>
       <HeroSection
@@ -243,7 +256,11 @@ export default function ContactUsPage() {
             </div>
           </div>
         </div>
-        <AboutUsSection />
+        <AboutUsSection
+          title="كيف تتواصل معنا !"
+          description="لا تتردد في التواصل معنا عبر القنوات التالية. فريقنا جاهز للرد على جميع استفساراتك في أسرع وقت ممكن."
+          data={aboutUsData}
+        />
         <Toaster />
       </section>
     </>
