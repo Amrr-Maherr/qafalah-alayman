@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import NewsTicker from "../NewsTicker";
+import emailjs from "@emailjs/browser"; // تأكد تنصيب الحزمة: npm i @emailjs/browser
 
 const contactValidationSchema = Yup.object({
   fullName: Yup.string().required("الاسم الكامل مطلوب"),
@@ -18,7 +19,7 @@ const contactValidationSchema = Yup.object({
 export default function ContactUsPage() {
   return (
     <>
-      <NewsTicker/>
+      <NewsTicker />
       <section className="bg-slate-50 py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
@@ -74,16 +75,37 @@ export default function ContactUsPage() {
                   email: "",
                   subject: "",
                   message: "",
+                  phone: "", // أضفت حقل رقم الهاتف (اختياري)
                 }}
                 validationSchema={contactValidationSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
-                  console.log("بيانات النموذج المرسلة:", values);
+                  const serviceID = "service_n94qirq";
+                  const templateID = "template_odysqen";
+                  const userID = "jGGb9ECGdgNciOnIL"; // مفتاحك العام من EmailJS
 
-                  setTimeout(() => {
-                    setSubmitting(false);
-                    toast.success("تم إرسال رسالتك بنجاح!");
-                    resetForm();
-                  }, 1000);
+                  const templateParams = {
+                    to_name: "فريق الدعم",
+                    to_email: "amrr.maherr24@gmail.com", // الإيميل اللي تستقبل عليه الرسائل
+                    from_name: values.fullName,
+                    from_email: values.email,
+                    from_phone: values.phone,
+                    subject: values.subject,
+                    message: values.message,
+                  };
+
+                  emailjs
+                    .send(serviceID, templateID, templateParams, userID)
+                    .then(() => {
+                      toast.success("تم إرسال رسالتك بنجاح!");
+                      resetForm();
+                    })
+                    .catch((error) => {
+                      toast.error("حدث خطأ أثناء الإرسال، حاول مرة أخرى.");
+                      console.error("EmailJS error:", error);
+                    })
+                    .finally(() => {
+                      setSubmitting(false);
+                    });
                 }}
               >
                 {({ isSubmitting }) => (
@@ -125,6 +147,21 @@ export default function ContactUsPage() {
                         name="email"
                         component="p"
                         className="text-red-500 text-xs mt-1"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block mb-2 text-sm font-bold text-gray-700"
+                      >
+                        رقم الهاتف (اختياري)
+                      </label>
+                      <Field
+                        type="text"
+                        name="phone"
+                        id="phone"
+                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                       />
                     </div>
 
