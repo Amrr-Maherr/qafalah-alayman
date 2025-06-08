@@ -18,6 +18,50 @@ const validationSchema = Yup.object({
 export default function HotelForm() {
   const navigate = useNavigate();
 
+  const handleBookingSuccess = () => {
+    toast(
+      (t) => (
+        <div
+          className="flex flex-col items-center justify-center gap-4 p-4 text-white"
+          style={{ direction: "rtl" }}
+        >
+          <p className="text-lg font-semibold">تم حجز الفندق بنجاح!</p>
+          <p>هل ترغب بحجز ليموزين الآن؟</p>
+          <div className="flex gap-4">
+            <button
+              onClick={() => {
+                toast.dismiss(t.id);
+                navigate("/limousine");
+              }}
+              className="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded text-white font-semibold"
+            >
+              نعم
+            </button>
+            <button
+              onClick={() => {
+                toast.dismiss(t.id);
+                navigate("/confirmation");
+              }}
+              className="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded text-white font-semibold"
+            >
+              لا
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        duration: 8000,
+        position: "top-center",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+          fontSize: "16px",
+        },
+      }
+    );
+  };
+
   return (
     <section className="container mx-auto p-8 bg-gradient-to-br bg-[#F2F2F2] to-white shadow-xl rounded-2xl my-10 max-w-4xl">
       <h2 className="text-3xl font-bold mb-8 text-center text-amber-600">
@@ -42,19 +86,7 @@ export default function HotelForm() {
 
           localStorage.setItem("travelBooking", JSON.stringify(travelBooking));
 
-          toast.success("تم حجز الفندق بنجاح! جاري توجيهك لتأكيد الحجز...", {
-            duration: 4000,
-            position: "top-center",
-            style: {
-              borderRadius: "10px",
-              background: "#333",
-              color: "#fff",
-              fontSize: "16px",
-              direction: "rtl",
-            },
-          });
-
-          navigate("/confirmation");
+          handleBookingSuccess();
         }}
       >
         {() => (
