@@ -152,7 +152,7 @@ export default function HotelForm() {
             <div className="md:col-span-2 text-center mt-6">
               <button
                 type="submit"
-                className="bg-[#B38124] hover:bg-[#a06f1a] text-white px-8 py-3 rounded-xl text-lg font-semibold transition duration-200"
+                className="bg-[#B38124] hover:bg-[#a06f1a] text-white px-8 py-3 rounded-[40px] text-lg font-semibold transition duration-200"
               >
                 احجز الآن
               </button>

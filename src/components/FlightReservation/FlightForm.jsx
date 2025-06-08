@@ -225,7 +225,7 @@ export default function FlightForm() {
             <div className="md:col-span-2 text-center mt-8">
               <button
                 type="submit"
-                className="bg-amber-600 hover:bg-amber-700 text-white px-10 py-3 rounded-2xl font-semibold transition duration-300"
+                className="bg-amber-600 hover:bg-amber-700 text-white px-10 py-3 rounded-[40px] font-semibold transition duration-300"
               >
                 احجز الآن
               </button>

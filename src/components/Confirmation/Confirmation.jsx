@@ -115,7 +115,7 @@ export default function Confirmation() {
                       <button
                         type="button"
                         onClick={() => setIsEditing(true)}
-                        className="flex items-center bg-[#B38124] text-white px-4 py-2 rounded-lg hover:bg-[#a06f1a] transition"
+                        className="flex items-center bg-[#B38124] text-white px-4 py-2 rounded-[40px] hover:bg-[#a06f1a] transition"
                       >
                         <FaPencilAlt className="ml-2" /> تعديل
                       </button>
@@ -504,7 +504,7 @@ export default function Confirmation() {
                     ) : (
                       <button
                         type="submit"
-                        className="bg-[#B38124] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-[#a06f1a] transition"
+                        className="bg-[#B38124] text-white px-10 py-4 rounded-[40px] text-lg font-semibold hover:bg-[#a06f1a] transition"
                       >
                         تأكيد البيانات والحجز
                       </button>
