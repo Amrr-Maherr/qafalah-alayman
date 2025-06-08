@@ -4,7 +4,9 @@ import toast, { Toaster } from "react-hot-toast";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import NewsTicker from "../NewsTicker";
 import emailjs from "@emailjs/browser"; // تأكد تنصيب الحزمة: npm i @emailjs/browser
-
+import AboutUsSection from "../AboutUsSection/AboutUsSection";
+import HeroSection from "../Herocomponents/HeroSection";
+import Image from "../../assets/fly.png";
 const contactValidationSchema = Yup.object({
   fullName: Yup.string().required("الاسم الكامل مطلوب"),
   email: Yup.string()
@@ -19,9 +21,14 @@ const contactValidationSchema = Yup.object({
 export default function ContactUsPage() {
   return (
     <>
-      <NewsTicker />
-      <section className="bg-slate-50 py-20 px-4">
-        <div className="container mx-auto">
+      <HeroSection
+        BackGroundImage={Image}
+        title="ابدأ رحلة تواصلك معنا !"
+        description="نعمل باستمرار لجعل تجربتك من خلال خدماتنا أسهل, سنقوم بالرد على رسالتكم في اقرب وقت ممكن."
+        buttonText="اكتشف الآن"
+      />
+      <section className="bg-white py-20 px-4">
+        <div className="container mx-auto  py-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-extrabold text-gray-800">
               تواصل معنا
@@ -65,6 +72,21 @@ export default function ContactUsPage() {
                   </a>
                   <FaEnvelope className="text-2xl text-amber-500" />
                 </div>
+              </div>
+
+              {/* خريطة مدمجة */}
+              <div className="mt-8">
+                <iframe
+                  title="موقعنا على الخريطة"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.046109304858!2d46.6752953!3d24.7135514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f0389fd31d131%3A0x8f812bd0bd9e56b6!2z2YXYr9mK2YbYqSDYp9mE2YXYudipINin2YTYs9mK2KfYqiDYp9mE2KfZgdi42Kkg2YXYt9i52YUg2KfZhNmF2YjYqQ!5e0!3m2!1sar!2ssa!4v1717852700000"
+                  width="100%"
+                  height="500"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-xl shadow-lg"
+                ></iframe>
               </div>
             </div>
 
@@ -210,7 +232,7 @@ export default function ContactUsPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-amber-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-600 transition-all duration-300 disabled:bg-gray-400"
+                        className="w-full bg-[#B38124] text-white font-bold py-3 px-6 rounded-[50px] hover:bg-amber-600 transition-all duration-300 disabled:bg-gray-400"
                       >
                         {isSubmitting ? "جاري الإرسال..." : "إرسال الرسالة"}
                       </button>
@@ -221,6 +243,7 @@ export default function ContactUsPage() {
             </div>
           </div>
         </div>
+        <AboutUsSection />
         <Toaster />
       </section>
     </>
