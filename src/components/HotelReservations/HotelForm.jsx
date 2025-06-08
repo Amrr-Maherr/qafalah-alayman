@@ -4,7 +4,6 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { FaHotel, FaBed } from "react-icons/fa";
 
-// مخطط التحقق باستخدام Yup
 const validationSchema = Yup.object({
   hotelName: Yup.string().required("اسم الفندق مطلوب"),
   roomType: Yup.string().required("نوع الغرفة مطلوب"),
@@ -20,8 +19,8 @@ export default function HotelForm() {
   const navigate = useNavigate();
 
   return (
-    <section className="container mx-auto p-8 bg-gradient-to-br from-blue-50 to-white shadow-xl rounded-2xl my-10 max-w-4xl">
-      <h2 className="text-3xl font-bold mb-8 text-center text-blue-800">
+    <section className="container mx-auto p-8 bg-gradient-to-br bg-[#F2F2F2] to-white shadow-xl rounded-2xl my-10 max-w-4xl">
+      <h2 className="text-3xl font-bold mb-8 text-center text-amber-600">
         🏨 احجز فندقك الآن
       </h2>
       <Formik
@@ -33,21 +32,16 @@ export default function HotelForm() {
         }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          // استرجاع بيانات الرحلة من localStorage
           const flightData =
             JSON.parse(localStorage.getItem("flightBooking")) || {};
 
-          // دمج بيانات الرحلة والفندق في كائن واحد
           const travelBooking = {
             flight: flightData,
             hotel: values,
           };
 
-          // تخزين الكائن المدمج في localStorage
           localStorage.setItem("travelBooking", JSON.stringify(travelBooking));
-          console.log("تم تخزين بيانات الحجز في localStorage:", travelBooking);
 
-          // عرض تنبيه النجاح
           toast.success("تم حجز الفندق بنجاح! جاري توجيهك لتأكيد الحجز...", {
             duration: 4000,
             position: "top-center",
@@ -60,19 +54,17 @@ export default function HotelForm() {
             },
           });
 
-          // الانتقال فورًا إلى صفحة التأكيد
           navigate("/confirmation");
         }}
       >
         {() => (
           <Form className="grid md:grid-cols-2 gap-6">
-            {/* اسم الفندق */}
             <div>
               <label className="block text-right font-semibold mb-2">
                 اختر الفندق
               </label>
               <div className="relative">
-                <FaHotel className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                <FaHotel className="absolute top-1/2 right-3 transform -translate-y-1/2 text-amber-600" />
                 <Field
                   as="select"
                   name="hotelName"
@@ -91,13 +83,12 @@ export default function HotelForm() {
               </div>
             </div>
 
-            {/* نوع الغرفة */}
             <div>
               <label className="block text-right font-semibold mb-2">
                 نوع الغرفة
               </label>
               <div className="relative">
-                <FaBed className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                <FaBed className="absolute top-1/2 right-3 transform -translate-y-1/2 text-amber-600" />
                 <Field
                   as="select"
                   name="roomType"
@@ -116,13 +107,12 @@ export default function HotelForm() {
               </div>
             </div>
 
-            {/* عدد الغرف */}
             <div>
               <label className="block text-right font-semibold mb-2">
                 عدد الغرف
               </label>
               <div className="relative">
-                <FaBed className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                <FaBed className="absolute top-1/2 right-3 transform -translate-y-1/2 text-amber-600" />
                 <Field
                   type="number"
                   name="rooms"
@@ -138,13 +128,12 @@ export default function HotelForm() {
               </div>
             </div>
 
-            {/* عدد الأسرّة */}
             <div>
               <label className="block text-right font-semibold mb-2">
                 عدد الأسرّة
               </label>
               <div className="relative">
-                <FaBed className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                <FaBed className="absolute top-1/2 right-3 transform -translate-y-1/2 text-amber-600" />
                 <Field
                   type="number"
                   name="beds"
@@ -160,11 +149,10 @@ export default function HotelForm() {
               </div>
             </div>
 
-            {/* زر الإرسال */}
             <div className="md:col-span-2 text-center mt-6">
               <button
                 type="submit"
-                className="bg-[#B38124] text-white px-8 py-3 rounded-xl text-lg font-semibold transition duration-200"
+                className="bg-[#B38124] hover:bg-[#a06f1a] text-white px-8 py-3 rounded-xl text-lg font-semibold transition duration-200"
               >
                 احجز الآن
               </button>
@@ -172,7 +160,6 @@ export default function HotelForm() {
           </Form>
         )}
       </Formik>
-      {/* إضافة Toaster لعرض التنبيهات */}
       <Toaster />
     </section>
   );

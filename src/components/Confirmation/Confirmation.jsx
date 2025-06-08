@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
@@ -16,11 +15,9 @@ import {
   FaPencilAlt,
   FaSave,
   FaTimes,
-  FaCar,
 } from "react-icons/fa";
 import NewsTicker from "../NewsTicker";
 
-// مخطط التحقق الكامل باستخدام Yup
 const validationSchema = Yup.object({
   flight: Yup.object({
     departureCity: Yup.string().required("مدينة المغادرة مطلوبة"),
@@ -43,16 +40,16 @@ const validationSchema = Yup.object({
       .required("مطلوب"),
   }),
   hotel: Yup.object({
-    hotelName: Yup.string(), // اجعلها اختيارية إذا كان الفندق ليس إجباريًا
+    hotelName: Yup.string(),
     roomType: Yup.string(),
+    rooms: Yup.number().min(1, "يجب حجز غرفة واحدة على الأقل"),
+    beds: Yup.number().min(1, "يجب اختيار سرير واحد على الأقل"),
   }),
   user: Yup.object({
     fullName: Yup.string().required("الاسم الكامل مطلوب"),
     idNumber: Yup.string().required("رقم الهوية مطلوب"),
     nationality: Yup.string().required("الجنسية مطلوبة"),
-    phoneNumber: Yup.string()
-      .matches(/^[0-9]{10,15}$/, "رقم الهاتف غير صالح")
-      .required("رقم الهاتف مطلوب"),
+    phoneNumber: Yup.string().required("رقم الهاتف مطلوب"),
     email: Yup.string()
       .email("البريد الإلكتروني غير صالح")
       .required("البريد الإلكتروني مطلوب"),
@@ -62,7 +59,6 @@ const validationSchema = Yup.object({
 export default function Confirmation() {
   const travelData = JSON.parse(localStorage.getItem("travelBooking")) || {};
   const [isEditing, setIsEditing] = useState(false);
-  const navigate = useNavigate();
 
   const initialFormValues = {
     flight: {
@@ -89,52 +85,12 @@ export default function Confirmation() {
     },
   };
 
-  // دالة لعرض تنبيه الليموزين التفاعلي
-  const showLimoToast = () => {
-    toast(
-      (t) => (
-        <div className="text-right">
-          <div className="flex items-start gap-4">
-            <FaCar className="text-3xl text-yellow-500 mt-1" />
-            <div>
-              <h4 className="font-bold text-lg text-gray-800">هل أنت مهتم؟</h4>
-              <p className="text-gray-600 mt-1">
-                يمكننا ترتيب سيارة ليموزين لتوصيلك. هل ترغب في حجز واحدة؟
-              </p>
-            </div>
-          </div>
-          <div className="flex justify-end gap-3 mt-5">
-            <button
-              onClick={() => {
-                toast.dismiss(t.id);
-                navigate("/limousine");
-              }}
-              className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-md transition-colors"
-            >
-              نعم، بالتأكيد
-            </button>
-            <button
-              onClick={() => toast.dismiss(t.id)}
-              className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-4 py-2 rounded-md transition-colors"
-            >
-              لا، شكرًا
-            </button>
-          </div>
-        </div>
-      ),
-      {
-        duration: 60000,
-        position: "top-center",
-      }
-    );
-  };
-
   return (
     <>
-    <NewsTicker/>
-      <section className="container mx-auto px-6 py-12 bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen">
+      <NewsTicker />
+      <section className="container mx-auto px-6 py-12 bg-gradient-to-br bg-[#F2F2F2] to-white min-h-screen">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <h2 className="text-4xl font-bold text-center text-blue-900 py-8 bg-blue-100/50">
+          <h2 className="text-4xl font-bold text-center text-amber-600 py-8 bg-[#F2F2F2]/50">
             📋 تأكيد الحجز
           </h2>
 
@@ -144,27 +100,22 @@ export default function Confirmation() {
             enableReinitialize
             onSubmit={(values) => {
               localStorage.setItem("travelBooking", JSON.stringify(values));
-              toast.success("تم تأكيد الحجز بنجاح!");
+              toast.success("تم حفظ وتأكيد البيانات بنجاح!");
               setIsEditing(false);
-
-              setTimeout(() => {
-                showLimoToast();
-              }, 1500);
             }}
           >
             {({ values, resetForm }) => (
               <Form>
                 <div className="p-8">
-                  {/* قسم تفاصيل الحجز */}
                   <div className="flex justify-between items-center mb-6">
-                    <h3 className="text-2xl font-semibold text-right text-blue-800 flex items-center">
+                    <h3 className="text-2xl font-semibold text-right text-amber-600 flex items-center">
                       <FaHotel className="ml-2" /> تفاصيل الحجز
                     </h3>
                     {!isEditing && (
                       <button
                         type="button"
                         onClick={() => setIsEditing(true)}
-                        className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+                        className="flex items-center bg-[#B38124] text-white px-4 py-2 rounded-lg hover:bg-[#a06f1a] transition"
                       >
                         <FaPencilAlt className="ml-2" /> تعديل
                       </button>
@@ -173,15 +124,14 @@ export default function Confirmation() {
 
                   {travelData.flight || travelData.hotel ? (
                     <div className="grid md:grid-cols-2 gap-6 mb-10">
-                      {/* بيانات الرحلة */}
                       {travelData.flight && (
-                        <div className="bg-blue-50 p-6 rounded-2xl shadow-md">
-                          <h4 className="text-xl font-semibold text-right text-blue-700 mb-4 flex items-center">
+                        <div className="bg-[#F2F2F2] p-6 rounded-2xl shadow-md">
+                          <h4 className="text-xl font-semibold text-right text-amber-600 mb-4 flex items-center">
                             <FaPlane className="ml-2" /> تفاصيل الرحلة
                           </h4>
                           <div className="space-y-4 text-right text-gray-700">
                             <div>
-                              <h5 className="font-semibold text-blue-600">
+                              <h5 className="font-semibold text-amber-600">
                                 الوجهات
                               </h5>
                               <p>
@@ -190,7 +140,7 @@ export default function Confirmation() {
                                   <Field
                                     type="text"
                                     name="flight.departureCity"
-                                    className="w-full mt-1 p-2 border rounded-md"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                                   />
                                 ) : (
                                   values.flight.departureCity
@@ -207,7 +157,7 @@ export default function Confirmation() {
                                   <Field
                                     type="text"
                                     name="flight.returnCity"
-                                    className="w-full mt-1 p-2 border rounded-md"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                                   />
                                 ) : (
                                   values.flight.returnCity
@@ -220,7 +170,7 @@ export default function Confirmation() {
                               />
                             </div>
                             <div>
-                              <h5 className="font-semibold text-blue-600 flex items-center justify-end">
+                              <h5 className="font-semibold text-amber-600 flex items-center justify-end">
                                 <FaCalendarAlt className="ml-2" /> التواريخ
                               </h5>
                               <p>
@@ -229,7 +179,7 @@ export default function Confirmation() {
                                   <Field
                                     type="date"
                                     name="flight.departureDate"
-                                    className="w-full mt-1 p-2 border rounded-md"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                                   />
                                 ) : (
                                   values.flight.departureDate
@@ -246,7 +196,7 @@ export default function Confirmation() {
                                   <Field
                                     type="date"
                                     name="flight.returnDate"
-                                    className="w-full mt-1 p-2 border rounded-md"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                                   />
                                 ) : (
                                   values.flight.returnDate
@@ -259,7 +209,7 @@ export default function Confirmation() {
                               />
                             </div>
                             <div>
-                              <h5 className="font-semibold text-blue-600 flex items-center justify-end">
+                              <h5 className="font-semibold text-amber-600 flex items-center justify-end">
                                 <FaUsers className="ml-2" /> المسافرون
                               </h5>
                               <div
@@ -273,7 +223,7 @@ export default function Confirmation() {
                                     <Field
                                       type="number"
                                       name="flight.adults"
-                                      className="w-full p-2 border rounded-md text-center"
+                                      className="w-full p-2 border border-gray-300 rounded-xl text-center focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     />
                                   ) : (
                                     <p className="font-bold text-lg">
@@ -292,7 +242,7 @@ export default function Confirmation() {
                                     <Field
                                       type="number"
                                       name="flight.children"
-                                      className="w-full p-2 border rounded-md text-center"
+                                      className="w-full p-2 border border-gray-300 rounded-xl text-center focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     />
                                   ) : (
                                     <p className="font-bold text-lg">
@@ -311,7 +261,7 @@ export default function Confirmation() {
                                     <Field
                                       type="number"
                                       name="flight.seniors"
-                                      className="w-full p-2 border rounded-md text-center"
+                                      className="w-full p-2 border border-gray-300 rounded-xl text-center focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     />
                                   ) : (
                                     <p className="font-bold text-lg">
@@ -329,24 +279,109 @@ export default function Confirmation() {
                           </div>
                         </div>
                       )}
-                      {/* بيانات الفندق */}
                       {travelData.hotel && (
-                        <div className="bg-blue-50 p-6 rounded-2xl shadow-md">
-                          <h4 className="text-xl font-semibold text-right text-blue-700 mb-4">
-                            تفاصيل الفندق
+                        <div className="bg-[#F2F2F2] p-6 rounded-2xl shadow-md">
+                          <h4 className="text-xl font-semibold text-right text-amber-600 mb-4 flex items-center">
+                            <FaHotel className="ml-2" /> تفاصيل الفندق
                           </h4>
-                          <p>
-                            الاسم:{" "}
-                            {isEditing ? (
-                              <Field
-                                type="text"
+                          <div className="space-y-4 text-right text-gray-700">
+                            <div>
+                              <h5 className="font-semibold text-amber-600">
+                                اسم الفندق
+                              </h5>
+                              <p>
+                                {isEditing ? (
+                                  <Field
+                                    as="select"
+                                    name="hotel.hotelName"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                  >
+                                    <option value="">اختر الفندق</option>
+                                    <option value="هيلتون">هيلتون</option>
+                                    <option value="المروة">المروة</option>
+                                    <option value="الريتز">الريتز</option>
+                                  </Field>
+                                ) : (
+                                  values.hotel.hotelName
+                                )}
+                              </p>
+                              <ErrorMessage
                                 name="hotel.hotelName"
-                                className="w-full mt-1 p-2 border rounded-md"
+                                component="div"
+                                className="text-red-500 text-sm"
                               />
-                            ) : (
-                              values.hotel.hotelName
-                            )}
-                          </p>
+                            </div>
+                            <div>
+                              <h5 className="font-semibold text-amber-600">
+                                نوع الغرفة
+                              </h5>
+                              <p>
+                                {isEditing ? (
+                                  <Field
+                                    as="select"
+                                    name="hotel.roomType"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                  >
+                                    <option value="">اختر نوع الغرفة</option>
+                                    <option value="مفردة">غرفة مفردة</option>
+                                    <option value="مزدوجة">غرفة مزدوجة</option>
+                                    <option value="عائلية">غرفة عائلية</option>
+                                  </Field>
+                                ) : (
+                                  values.hotel.roomType
+                                )}
+                              </p>
+                              <ErrorMessage
+                                name="hotel.roomType"
+                                component="div"
+                                className="text-red-500 text-sm"
+                              />
+                            </div>
+                            <div>
+                              <h5 className="font-semibold text-amber-600">
+                                عدد الغرف
+                              </h5>
+                              <p>
+                                {isEditing ? (
+                                  <Field
+                                    type="number"
+                                    name="hotel.rooms"
+                                    min="1"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                  />
+                                ) : (
+                                  values.hotel.rooms
+                                )}
+                              </p>
+                              <ErrorMessage
+                                name="hotel.rooms"
+                                component="div"
+                                className="text-red-500 text-sm"
+                              />
+                            </div>
+                            <div>
+                              <h5 className="font-semibold text-amber-600">
+                                عدد الأسرّة
+                              </h5>
+                              <p>
+                                {isEditing ? (
+                                  <Field
+                                    type="number"
+                                    name="hotel.beds"
+                                    min="1"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                  />
+                                ) : (
+                                  values.hotel.beds
+                                )}
+                              </p>
+                              <ErrorMessage
+                                name="hotel.beds"
+                                component="div"
+                                className="text-red-500 text-sm"
+                              />
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -356,24 +391,22 @@ export default function Confirmation() {
                     </p>
                   )}
 
-                  <hr className="border-blue-200 my-8" />
+                  <hr className="border-gray-300 my-8" />
 
-                  {/* قسم البيانات الشخصية */}
                   <div>
-                    <h3 className="text-2xl font-semibold text-right text-blue-800 mb-6 flex items-center">
+                    <h3 className="text-2xl font-semibold text-right text-amber-600 mb-6 flex items-center">
                       <FaUser className="ml-2" /> أدخل بياناتك الشخصية
                     </h3>
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div className="relative">
+                      <div>
                         <label className="block text-right font-semibold text-gray-700 mb-2">
                           الاسم الكامل
                         </label>
-                        <FaUser className="absolute top-12 right-4 transform -translate-y-1/2 text-gray-400" />
                         <Field
                           type="text"
                           name="user.fullName"
                           placeholder="أدخل اسمك الكامل"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                         />
                         <ErrorMessage
                           name="user.fullName"
@@ -381,16 +414,15 @@ export default function Confirmation() {
                           className="text-red-500 text-sm text-right mt-1"
                         />
                       </div>
-                      <div className="relative">
+                      <div>
                         <label className="block text-right font-semibold text-gray-700 mb-2">
                           رقم الهوية
                         </label>
-                        <FaIdCard className="absolute top-12 right-4 transform -translate-y-1/2 text-gray-400" />
                         <Field
                           type="text"
                           name="user.idNumber"
                           placeholder="أدخل رقم هويتك"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                         />
                         <ErrorMessage
                           name="user.idNumber"
@@ -398,16 +430,15 @@ export default function Confirmation() {
                           className="text-red-500 text-sm text-right mt-1"
                         />
                       </div>
-                      <div className="relative">
+                      <div>
                         <label className="block text-right font-semibold text-gray-700 mb-2">
                           الجنسية
                         </label>
-                        <FaFlag className="absolute top-12 right-4 transform -translate-y-1/2 text-gray-400" />
                         <Field
                           type="text"
                           name="user.nationality"
                           placeholder="أدخل جنسيتك"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                         />
                         <ErrorMessage
                           name="user.nationality"
@@ -415,16 +446,15 @@ export default function Confirmation() {
                           className="text-red-500 text-sm text-right mt-1"
                         />
                       </div>
-                      <div className="relative">
+                      <div>
                         <label className="block text-right font-semibold text-gray-700 mb-2">
                           رقم الهاتف
                         </label>
-                        <FaPhone className="absolute top-12 right-4 transform -translate-y-1/2 text-gray-400" />
                         <Field
                           type="text"
                           name="user.phoneNumber"
                           placeholder="أدخل رقم هاتفك"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                         />
                         <ErrorMessage
                           name="user.phoneNumber"
@@ -432,16 +462,15 @@ export default function Confirmation() {
                           className="text-red-500 text-sm text-right mt-1"
                         />
                       </div>
-                      <div className="md:col-span-2 relative">
+                      <div>
                         <label className="block text-right font-semibold text-gray-700 mb-2">
                           البريد الإلكتروني
                         </label>
-                        <FaEnvelope className="absolute top-12 right-4 transform -translate-y-1/2 text-gray-400" />
                         <Field
                           type="email"
                           name="user.email"
                           placeholder="أدخل بريدك الإلكتروني"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                         />
                         <ErrorMessage
                           name="user.email"
@@ -452,13 +481,12 @@ export default function Confirmation() {
                     </div>
                   </div>
 
-                  {/* أزرار الإرسال النهائية */}
                   <div className="text-center mt-12">
                     {isEditing ? (
                       <div className="flex justify-center gap-4">
                         <button
                           type="submit"
-                          className="bg-green-600 text-white px-8 py-3 rounded-xl text-lg font-semibold hover:bg-green-700 transition flex items-center"
+                          className="bg-[#B38124] text-white px-8 py-3 rounded-xl text-lg font-semibold hover:bg-[#a06f1a] transition flex items-center"
                         >
                           <FaSave className="ml-2" /> حفظ التعديلات
                         </button>
@@ -476,7 +504,7 @@ export default function Confirmation() {
                     ) : (
                       <button
                         type="submit"
-                        className="bg-[#B38124] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-[#9f6e1e] transition"
+                        className="bg-[#B38124] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-[#a06f1a] transition"
                       >
                         تأكيد البيانات والحجز
                       </button>
@@ -487,7 +515,6 @@ export default function Confirmation() {
             )}
           </Formik>
         </div>
-        {/* تأكد من وجود هذا المكون لعرض التنبيهات */}
         <Toaster />
       </section>
     </>

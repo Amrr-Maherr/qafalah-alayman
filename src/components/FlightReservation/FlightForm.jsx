@@ -10,7 +10,6 @@ import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-// مخطط التحقق باستخدام Yup
 const validationSchema = Yup.object({
   departureCity: Yup.string().required("وجهة المغادرة مطلوبة"),
   returnCity: Yup.string().required("وجهة العودة مطلوبة"),
@@ -44,15 +43,15 @@ export default function FlightForm() {
 
   useEffect(() => {
     const today = new Date();
-    today.setDate(today.getDate() + 2); // بعد يومين
+    today.setDate(today.getDate() + 2);
     const formatted = today.toISOString().split("T")[0];
     setMinDepartureDate(formatted);
     setMinReturnDate(formatted);
   }, []);
 
   return (
-    <section className="container mx-auto p-8 bg-gradient-to-br from-blue-50 to-white shadow-xl rounded-2xl my-10 max-w-4xl">
-      <h2 className="text-3xl font-bold mb-8 text-center text-blue-800">
+    <section className="container mx-auto p-8 bg-[#F2F2F2] rounded-2xl shadow-lg max-w-4xl my-10">
+      <h2 className="text-3xl font-bold mb-8 text-center text-amber-600">
         ✈️ احجز رحلتك الآن
       </h2>
       <Formik
@@ -67,10 +66,7 @@ export default function FlightForm() {
         }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          // تخزين البيانات في localStorage
           localStorage.setItem("flightBooking", JSON.stringify(values));
-          console.log("تم إرسال النموذج وتخزينه في localStorage:", values);
-          // عرض تنبيه النجاح
           toast.success("تم حجز رحلتك بنجاح! جاري توجيهك لحجز الفندق...", {
             duration: 4000,
             position: "top-center",
@@ -82,46 +78,41 @@ export default function FlightForm() {
               direction: "rtl",
             },
           });
-          // الانتقال فورًا إلى صفحة Hotel
           setTimeout(() => {
             navigate("/Hotel");
           }, 2000);
         }}
       >
         {({ setFieldValue, values }) => (
-          <Form className="grid md:grid-cols-2 gap-6">
+          <Form className="grid md:grid-cols-2 gap-6 text-right">
             {/* وجهة المغادرة */}
             <div>
-              <label className="block text-right font-semibold mb-2">
-                وجهة المغادرة
-              </label>
+              <label className="block font-semibold mb-2">وجهة المغادرة</label>
               <div className="relative">
-                <FaPlaneDeparture className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                <FaPlaneDeparture className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                 <Field
                   type="text"
                   name="departureCity"
                   placeholder="مثال: القاهرة"
-                  className="w-full p-3 pr-10 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full p-4 pr-10 border border-gray-300 rounded-2xl bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
                 />
                 <ErrorMessage
                   name="departureCity"
                   component="div"
-                  className="text-red-500 text-sm text-right mt-1"
+                  className="text-red-500 text-sm mt-1"
                 />
               </div>
             </div>
 
             {/* وجهة العودة */}
             <div>
-              <label className="block text-right font-semibold mb-2">
-                وجهة العودة
-              </label>
+              <label className="block font-semibold mb-2">وجهة العودة</label>
               <div className="relative">
-                <FaPlaneArrival className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                <FaPlaneArrival className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                 <Field
                   as="select"
                   name="returnCity"
-                  className="w-full p-3 pr-10 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full p-4 pr-10 border border-gray-300 rounded-2xl bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
                 >
                   <option value="">اختر وجهة العودة</option>
                   <option value="جدة">جدة</option>
@@ -131,18 +122,16 @@ export default function FlightForm() {
                 <ErrorMessage
                   name="returnCity"
                   component="div"
-                  className="text-red-500 text-sm text-right mt-1"
+                  className="text-red-500 text-sm mt-1"
                 />
               </div>
             </div>
 
             {/* تاريخ المغادرة */}
             <div>
-              <label className="block text-right font-semibold mb-2">
-                تاريخ المغادرة
-              </label>
+              <label className="block font-semibold mb-2">تاريخ المغادرة</label>
               <div className="relative">
-                <FaCalendarAlt className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                <FaCalendarAlt className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                 <Field
                   type="date"
                   name="departureDate"
@@ -151,96 +140,92 @@ export default function FlightForm() {
                     setFieldValue("departureDate", e.target.value);
                     setMinReturnDate(e.target.value);
                   }}
-                  className="w-full p-3 pr-10 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full p-4 pr-10 border border-gray-300 rounded-2xl bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
                 />
                 <ErrorMessage
                   name="departureDate"
                   component="div"
-                  className="text-red-500 text-sm text-right mt-1"
+                  className="text-red-500 text-sm mt-1"
                 />
               </div>
             </div>
 
             {/* تاريخ العودة */}
             <div>
-              <label className="block text-right font-semibold mb-2">
-                تاريخ العودة
-              </label>
+              <label className="block font-semibold mb-2">تاريخ العودة</label>
               <div className="relative">
-                <FaCalendarAlt className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                <FaCalendarAlt className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                 <Field
                   type="date"
                   name="returnDate"
                   min={minReturnDate}
-                  className="w-full p-3 pr-10 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full p-4 pr-10 border border-gray-300 rounded-2xl bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
                 />
                 <ErrorMessage
                   name="returnDate"
                   component="div"
-                  className="text-red-500 text-sm text-right mt-1"
+                  className="text-red-500 text-sm mt-1"
                 />
               </div>
             </div>
 
-            {/* اختيار عدد المسافرين */}
+            {/* عدد المسافرين */}
             <div className="md:col-span-2">
-              <label className="block text-right font-semibold mb-2">
-                عدد المسافرين
-              </label>
-              <div className="grid md:grid-cols-3 gap-4">
+              <label className="block font-semibold mb-2">عدد المسافرين</label>
+              <div className="grid md:grid-cols-3 gap-6">
                 <div className="relative">
-                  <FaUsers className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                  <FaUsers className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                   <Field
                     type="number"
                     name="adults"
                     min="0"
-                    className="w-full p-3 pr-10 border border-gray-300 rounded-xl"
+                    className="w-full p-4 pr-10 border border-gray-300 rounded-2xl bg-white text-gray-800"
                     placeholder="بالغين"
                   />
                   <ErrorMessage
                     name="adults"
                     component="div"
-                    className="text-red-500 text-sm text-right mt-1"
+                    className="text-red-500 text-sm mt-1"
                   />
                 </div>
                 <div className="relative">
-                  <FaUsers className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                  <FaUsers className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                   <Field
                     type="number"
                     name="children"
                     min="0"
-                    className="w-full p-3 pr-10 border border-gray-300 rounded-xl"
+                    className="w-full p-4 pr-10 border border-gray-300 rounded-2xl bg-white text-gray-800"
                     placeholder="أطفال"
                   />
                   <ErrorMessage
                     name="children"
                     component="div"
-                    className="text-red-500 text-sm text-right mt-1"
+                    className="text-red-500 text-sm mt-1"
                   />
                 </div>
                 <div className="relative">
-                  <FaUsers className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+                  <FaUsers className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                   <Field
                     type="number"
                     name="seniors"
                     min="0"
-                    className="w-full p-3 pr-10 border border-gray-300 rounded-xl"
+                    className="w-full p-4 pr-10 border border-gray-300 rounded-2xl bg-white text-gray-800"
                     placeholder="مسنين"
                   />
                   <ErrorMessage
                     name="seniors"
                     component="div"
-                    className="text-red-500 text-sm text-right mt-1"
+                    className="text-red-500 text-sm mt-1"
                   />
                 </div>
               </div>
             </div>
 
             {/* زر الإرسال */}
-            <div className="md:col-span-2 text-center mt-6">
+            <div className="md:col-span-2 text-center mt-8">
               <button
                 type="submit"
-                className="bg-[#B38124] text-white px-8 py-3 rounded-xl text-lg font-semibold transition duration-200"
+                className="bg-amber-600 hover:bg-amber-700 text-white px-10 py-3 rounded-2xl font-semibold transition duration-300"
               >
                 احجز الآن
               </button>
@@ -248,7 +233,7 @@ export default function FlightForm() {
           </Form>
         )}
       </Formik>
-      {/* إضافة Toaster لعرض التنبيهات */}
+
       <Toaster />
     </section>
   );
