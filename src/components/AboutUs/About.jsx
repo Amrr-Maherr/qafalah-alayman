@@ -1,4 +1,4 @@
-import Image from "../../assets/about.png";
+import Image from "../../assets/Rectangle 440.png";
 export default function About() {
   return (
     <>
