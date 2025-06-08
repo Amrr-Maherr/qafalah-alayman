@@ -10,6 +10,8 @@ import Booklimousine from "./components/Booklimousine/Booklimousine";
 import FlightReservation from "./components/FlightReservation/FlightReservation";
 import HotelReservations from "./components/HotelReservations/HotelReservations";
 import FloatingContact from "./components/FloatingContact";
+import { Toaster } from "react-hot-toast";
+import Confirmation from "./components/Confirmation/Confirmation";
 
 
 
@@ -24,6 +26,7 @@ const myRouter = createBrowserRouter([
       { path: "Flight", element: <FlightReservation /> },
       { path: "Hotel", element: <HotelReservations /> },
       { path: "aboutUs", element: <AboutUs /> },
+      { path: "confirmation", element: <Confirmation /> },
       { path: "contact", element: <Contact /> },
       { path: "*", element: <NotFound /> },
     ],
@@ -36,6 +39,7 @@ function App() {
     <>
       <RouterProvider router={myRouter} />
       <FloatingContact />
+      <Toaster />
     </>
   );
 }
