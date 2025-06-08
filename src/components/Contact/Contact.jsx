@@ -6,7 +6,7 @@ import NewsTicker from "../NewsTicker";
 import emailjs from "@emailjs/browser"; // تأكد تنصيب الحزمة: npm i @emailjs/browser
 import AboutUsSection from "../AboutUsSection/AboutUsSection";
 import HeroSection from "../Herocomponents/HeroSection";
-import Image from "../../assets/fly.png";
+import Image from "../../assets/contact.png";
 const contactValidationSchema = Yup.object({
   fullName: Yup.string().required("الاسم الكامل مطلوب"),
   email: Yup.string()

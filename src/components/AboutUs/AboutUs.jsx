@@ -1,6 +1,6 @@
 import React from 'react'
 import HeroSection from '../Herocomponents/HeroSection'
-import Image from "../../assets/fly.png";
+import Image from "../../assets/a.png";
 import OurMessage from './OurMessage';
 import About from './About';
 import AboutUsSection from '../AboutUsSection/AboutUsSection';
