@@ -51,7 +51,7 @@ export default function Navbar() {
         </ul>
 
         <div className="order-3 cursor-pointer">
-          <Logo />
+          <Link to={"/"}><Logo /></Link>
         </div>
       </nav>
 
