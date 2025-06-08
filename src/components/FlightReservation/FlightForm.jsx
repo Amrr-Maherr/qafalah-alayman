@@ -174,6 +174,9 @@ export default function FlightForm() {
               <label className="block font-semibold mb-2">عدد المسافرين</label>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="relative">
+                  <label className="block font-semibold mb-2">
+                    البالغين (أكبر من 12 سنة)
+                  </label>
                   <FaUsers className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                   <Field
                     type="number"
@@ -189,6 +192,9 @@ export default function FlightForm() {
                   />
                 </div>
                 <div className="relative">
+                  <label className="block font-semibold mb-2">
+                    الأطفال (من 2 إلى 12 سنة)
+                  </label>
                   <FaUsers className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                   <Field
                     type="number"
@@ -204,6 +210,9 @@ export default function FlightForm() {
                   />
                 </div>
                 <div className="relative">
+                  <label className="block font-semibold mb-2">
+                    المسنين (أكبر من 65 سنة)
+                  </label>
                   <FaUsers className="absolute top-1/2 right-3 -translate-y-1/2 text-amber-600" />
                   <Field
                     type="number"

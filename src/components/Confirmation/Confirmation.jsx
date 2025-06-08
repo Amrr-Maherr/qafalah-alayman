@@ -140,7 +140,7 @@ export default function Confirmation() {
                                   <Field
                                     type="text"
                                     name="flight.departureCity"
-                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                                   />
                                 ) : (
                                   values.flight.departureCity
@@ -157,7 +157,7 @@ export default function Confirmation() {
                                   <Field
                                     type="text"
                                     name="flight.returnCity"
-                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                                   />
                                 ) : (
                                   values.flight.returnCity
@@ -179,7 +179,7 @@ export default function Confirmation() {
                                   <Field
                                     type="date"
                                     name="flight.departureDate"
-                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                                   />
                                 ) : (
                                   values.flight.departureDate
@@ -196,7 +196,7 @@ export default function Confirmation() {
                                   <Field
                                     type="date"
                                     name="flight.returnDate"
-                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                                   />
                                 ) : (
                                   values.flight.returnDate
@@ -223,7 +223,7 @@ export default function Confirmation() {
                                     <Field
                                       type="number"
                                       name="flight.adults"
-                                      className="w-full p-2 border border-gray-300 rounded-xl text-center focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                      className="w-full p-2 border border-gray-300 rounded-xl text-center focus:outline-none focus:ring-2 focus:ring-amber-600"
                                     />
                                   ) : (
                                     <p className="font-bold text-lg">
@@ -242,7 +242,7 @@ export default function Confirmation() {
                                     <Field
                                       type="number"
                                       name="flight.children"
-                                      className="w-full p-2 border border-gray-300 rounded-xl text-center focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                      className="w-full p-2 border border-gray-300 rounded-xl text-center focus:outline-none focus:ring-2 focus:ring-amber-600"
                                     />
                                   ) : (
                                     <p className="font-bold text-lg">
@@ -261,7 +261,7 @@ export default function Confirmation() {
                                     <Field
                                       type="number"
                                       name="flight.seniors"
-                                      className="w-full p-2 border border-gray-300 rounded-xl text-center focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                      className="w-full p-2 border border-gray-300 rounded-xl text-center focus:outline-none focus:ring-2 focus:ring-amber-600"
                                     />
                                   ) : (
                                     <p className="font-bold text-lg">
@@ -294,7 +294,7 @@ export default function Confirmation() {
                                   <Field
                                     as="select"
                                     name="hotel.hotelName"
-                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                                   >
                                     <option value="">اختر الفندق</option>
                                     <option value="هيلتون">هيلتون</option>
@@ -320,7 +320,7 @@ export default function Confirmation() {
                                   <Field
                                     as="select"
                                     name="hotel.roomType"
-                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                                   >
                                     <option value="">اختر نوع الغرفة</option>
                                     <option value="مفردة">غرفة مفردة</option>
@@ -347,7 +347,7 @@ export default function Confirmation() {
                                     type="number"
                                     name="hotel.rooms"
                                     min="1"
-                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                                   />
                                 ) : (
                                   values.hotel.rooms
@@ -369,7 +369,7 @@ export default function Confirmation() {
                                     type="number"
                                     name="hotel.beds"
                                     min="1"
-                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="w-full mt-1 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                                   />
                                 ) : (
                                   values.hotel.beds
@@ -406,7 +406,7 @@ export default function Confirmation() {
                           type="text"
                           name="user.fullName"
                           placeholder="أدخل اسمك الكامل"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                         />
                         <ErrorMessage
                           name="user.fullName"
@@ -422,7 +422,7 @@ export default function Confirmation() {
                           type="text"
                           name="user.idNumber"
                           placeholder="أدخل رقم هويتك"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                         />
                         <ErrorMessage
                           name="user.idNumber"
@@ -438,7 +438,7 @@ export default function Confirmation() {
                           type="text"
                           name="user.nationality"
                           placeholder="أدخل جنسيتك"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                         />
                         <ErrorMessage
                           name="user.nationality"
@@ -454,7 +454,7 @@ export default function Confirmation() {
                           type="text"
                           name="user.phoneNumber"
                           placeholder="أدخل رقم هاتفك"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                         />
                         <ErrorMessage
                           name="user.phoneNumber"
@@ -470,7 +470,7 @@ export default function Confirmation() {
                           type="email"
                           name="user.email"
                           placeholder="أدخل بريدك الإلكتروني"
-                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          className="w-full p-4 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
                         />
                         <ErrorMessage
                           name="user.email"
