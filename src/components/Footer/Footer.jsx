@@ -183,6 +183,18 @@ function Footer() {
           </div>
         </motion.div>
       </div>
+      <div className="w-full border-t border-[#E0E0E0] mt-10 pt-4">
+        <p className="text-center text-[#4D4D4D] text-sm md:text-base">
+          جميع الحقوق محفوظة &copy; {new Date().getFullYear()} —
+          <a
+            href="https://neon-code-nest.vercel.app/"
+            className="text-[#B38124] font-semibold"
+          >
+            {" "}
+            DevNest{" "}
+          </a>
+        </p>
+      </div>
     </motion.div>
   );
 }
