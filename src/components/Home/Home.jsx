@@ -1,4 +1,4 @@
-import Image from "../../assets/293621.jpg"
+import Image from "../../assets/home-image.png"
 import HeroSection from "../Herocomponents/HeroSection";
 import NewsTicker from "../NewsTicker";
 import HomeNav from './HomeNav';
