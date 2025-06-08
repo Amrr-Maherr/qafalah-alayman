@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Booklimousine from "./components/Booklimousine/Booklimousine";
 import FlightReservation from "./components/FlightReservation/FlightReservation";
 import HotelReservations from "./components/HotelReservations/HotelReservations";
+import FloatingContact from "./components/FloatingContact";
 
 
 
@@ -32,8 +33,11 @@ const myRouter = createBrowserRouter([
 function App() {
   
   return (
-    <RouterProvider router={myRouter}/>
-  )
+    <>
+      <RouterProvider router={myRouter} />
+      <FloatingContact />
+    </>
+  );
 }
 
 export default App

@@ -1,14 +1,13 @@
 import HeroSection from "../Herocomponents/HeroSection";
-import Image from "../../assets/home-image.png"
+import Image from "../../assets/lemo.png";
+
 export default function Booklimousine() {
-    return (
-      <>
-        <HeroSection
-          BackGroundImage={Image}
-          title="رحلتك تستحق الأفضل… ليموزين راقٍ بخدمة عالية المستوى في كل مدينة سعودية"
-          description="استمتع بتجربة تنقل فاخرة مع أسطول من السيارات الحديثة وسائقين مدربين – احجز في دقائق."
-          buttonText="اكتشف الان"
-        />
-      </>
-    );
+  return (
+    <HeroSection
+      BackGroundImage={Image}
+      title="ليموزين فاخر بخدمة راقية في جميع المدن السعودية"
+      description="تنقل فخم مع أسطول سيارات حديث وسائقين محترفين – احجز بسهولة."
+      buttonText="اكتشف الآن"
+    />
+  );
 }
