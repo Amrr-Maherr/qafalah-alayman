@@ -101,7 +101,7 @@ export default function Confirmation() {
   return (
     <>
       <NewsTicker />
-      <section className="container mx-auto px-6 py-12 bg-gradient-to-br bg-[#F2F2F2] to-white min-h-screen">
+      <section className=" mx-auto px-6 py-12 bg-gradient-to-br bg-[#F2F2F2] to-white min-h-screen">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
           <h2 className="text-4xl font-bold text-center text-amber-600 py-8 bg-[#F2F2F2]/50">
             📋 تأكيد الحجز
