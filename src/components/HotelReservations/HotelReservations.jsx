@@ -37,8 +37,8 @@ export default function HotelReservations() {
         description="خيارات متنوعة قريبة من الحرم تناسب جميع الميزانيات."
         buttonText="اكتشف الآن"
       />
+      <HotelSection />
       <HotelForm />
-      <HotelSection/>
       <AboutUsSection
         data={aboutUsData}
         title="مميزات حجز الفنادق لدينا"
