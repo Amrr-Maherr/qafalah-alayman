@@ -12,6 +12,7 @@ import HotelReservations from "./components/HotelReservations/HotelReservations"
 import FloatingContact from "./components/FloatingContact";
 import { Toaster } from "react-hot-toast";
 import Confirmation from "./components/Confirmation/Confirmation";
+import CustomerProtection from "./components/CustomerProtection/CustomerProtection";
 
 
 
@@ -27,6 +28,7 @@ const myRouter = createBrowserRouter([
       { path: "Hotel", element: <HotelReservations /> },
       { path: "aboutUs", element: <AboutUs /> },
       { path: "confirmation", element: <Confirmation /> },
+      { path: "CustomerProtection", element: <CustomerProtection /> },
       { path: "contact", element: <Contact /> },
       { path: "*", element: <NotFound /> },
     ],

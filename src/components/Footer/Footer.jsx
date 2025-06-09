@@ -7,6 +7,13 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function Footer() {
+  // قائمة بأرقام الواتساب
+  const whatsappNumbers = [
+    { number: "+0509861516", label: "واتس اب" },
+    { number: "+0509861516", label: "واتس اب" },
+    { number: "+0549484927", label: "واتس اب" },
+  ];
+
   return (
     <motion.div
       className="footer py-4 md:py-6 bg-[#FBF5EA]"
@@ -85,18 +92,7 @@ function Footer() {
             <div
               dir="rtl"
               className="flex justify-center items-center mb-5 md:justify-start md:mb-0"
-            >
-              <button
-                dir="ltr"
-                className="footerContactBtn rounded-[60px] py-[10px] px-[24px] bg-[#B38124] text-white flex items-center mt-[32px] gap-1"
-              >
-                اتصل بنا{" "}
-                <PiPhoneCall
-                  size={24}
-                  style={{ transform: "rotate(270deg)" }}
-                />
-              </button>
-            </div>
+            ></div>
           </div>
 
           {/* روابط */}
@@ -183,9 +179,23 @@ function Footer() {
           </div>
         </motion.div>
       </div>
+      <div className="whatsappContact flex items-center justify-center gap-2 mt-[32px] flex-wrap">
+        {whatsappNumbers.map((contact, index) => (
+          <a
+            key={index}
+            href={`https://wa.me/${contact.number.replace("+", "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footerContactBtn rounded-[60px] py-[10px] px-[24px] bg-[#B38124] text-white flex items-center gap-1"
+          >
+            {contact.label}{" "}
+            <PiPhoneCall size={24} style={{ transform: "rotate(270deg)" }} />
+          </a>
+        ))}
+      </div>
       <div className="w-full border-t border-[#E0E0E0] mt-10 pt-4">
         <p className="text-center text-[#4D4D4D] text-sm md:text-base">
-          جميع الحقوق محفوظة &copy; {new Date().getFullYear()} —
+          جميع الحقوق محفوظة © {new Date().getFullYear()} —
           <a
             href="https://neon-code-nest.vercel.app/"
             className="text-[#B38124] font-semibold"
