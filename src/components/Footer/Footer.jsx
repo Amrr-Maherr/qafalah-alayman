@@ -161,7 +161,7 @@ function Footer() {
                 <li>
                   <Link
                     className="no-underline text-[16px] text-[#4D4D4D]"
-                    href="#"
+                    to="/contact"
                   >
                     طلب أو شكوي
                   </Link>

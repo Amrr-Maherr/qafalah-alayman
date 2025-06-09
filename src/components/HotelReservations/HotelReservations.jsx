@@ -3,6 +3,7 @@ import AboutUsSection from "../AboutUsSection/AboutUsSection";
 import HeroSection from "../Herocomponents/HeroSection";
 import HotelForm from "./HotelForm";
 import { FaBed, FaConciergeBell, FaWifi, FaSwimmer } from "react-icons/fa";
+import HotelSection from "./HotelSection";
 
 export default function HotelReservations() {
   const aboutUsData = [
@@ -37,6 +38,7 @@ export default function HotelReservations() {
         buttonText="اكتشف الآن"
       />
       <HotelForm />
+      <HotelSection/>
       <AboutUsSection
         data={aboutUsData}
         title="مميزات حجز الفنادق لدينا"
