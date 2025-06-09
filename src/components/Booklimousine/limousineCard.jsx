@@ -11,8 +11,11 @@ import {
   XMarkIcon,
   CalendarIcon,
 } from "@heroicons/react/24/outline";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function LimousineCard({ limousine }) {
+    const nav = useNavigate()
   const [hovered, setHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,8 +23,10 @@ export default function LimousineCard({ limousine }) {
   const closeModal = () => setIsOpen(false);
 
   const handleBooking = () => {
-    // يمكن استبدال هذا بوظيفة الحجز الفعلية (مثل طلب API أو إعادة توجيه)
-    alert(`تم طلب حجز ${limousine.title}`);
+      toast.success(`تم الحجز بنجاح سيتم تحوليك اللي صفحه تاكيد الحجز ${limousine.title}`);
+      setTimeout(() => {
+        nav("/confirmation");
+      },1000)
   };
 
   return (
