@@ -1,5 +1,5 @@
 import LimousineCard from "./LimousineCard";
-import Image from "../../assets/Group 19.png"; // افتراض وجود صورة وهمية
+import Image from "../../assets/pexels-evgeni-adutskevich-363025374-14809180.jpg"; // افتراض وجود صورة وهمية
 import Slider from "../Slider/Slider";
 import { SwiperSlide } from "swiper/react";
 
