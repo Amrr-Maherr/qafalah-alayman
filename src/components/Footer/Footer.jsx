@@ -135,20 +135,20 @@ function Footer() {
               <h2 className="text-[18px] font-bold text-[#B38124]">السياسات</h2>
               <ul className="list-none">
                 <li>
-                  <a
+                  <Link
                     className="no-underline text-[16px] text-[#4D4D4D]"
-                    href="#"
+                    to="/PrivacyPolicy"
                   >
                     سياسات الخصوصيه
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="no-underline text-[16px] text-[#4D4D4D]"
-                    href="#"
+                    to="/Licenses"
                   >
                     التراخيص
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -159,20 +159,20 @@ function Footer() {
               </h2>
               <ul className="list-none">
                 <li>
-                  <a
+                  <Link
                     className="no-underline text-[16px] text-[#4D4D4D]"
                     href="#"
                   >
                     طلب أو شكوي
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="no-underline text-[16px] text-[#4D4D4D]"
-                    href="#"
+                    to="/CustomerProtection"
                   >
                     مبادئ حماية العملاء
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
