@@ -23,11 +23,39 @@ export default function LimousineCard({ limousine }) {
   const closeModal = () => setIsOpen(false);
 
   const handleBooking = () => {
-      toast.success(`تم الحجز بنجاح سيتم تحوليك اللي صفحه تاكيد الحجز ${limousine.title}`);
-      setTimeout(() => {
-        nav("/confirmation");
-      },1000)
+    // جلب البيانات الحالية من localStorage
+    const existingBooking =
+      JSON.parse(localStorage.getItem("travelBooking")) || {};
+
+    // إنشاء كائن بيانات الليموزين
+    const limousineData = {
+      title: limousine.title,
+      vehicleType: limousine.vehicleType,
+      pricePerHour: limousine.pricePerHour,
+      amenities: limousine.amenities,
+      bookingDate: new Date().toISOString().split("T")[0], // تاريخ الحجز الحالي (YYYY-MM-DD)
+    };
+
+    // تحديث الكائن في localStorage بإضافة/تحديث قسم limousine
+    const updatedBooking = {
+      ...existingBooking,
+      limousine: limousineData,
+    };
+
+    // حفظ البيانات في localStorage
+    localStorage.setItem("travelBooking", JSON.stringify(updatedBooking));
+
+    // عرض تنبيه نجاح
+    toast.success(
+      `تم الحجز بنجاح سيتم توجيهك إلى صفحة تأكيد الحجز: ${limousine.title}`
+    );
+
+    // إعادة توجيه إلى صفحة التأكيد بعد 1 ثانية
+    setTimeout(() => {
+      nav("/confirmation");
+    }, 1000);
   };
+
 
   return (
     <>

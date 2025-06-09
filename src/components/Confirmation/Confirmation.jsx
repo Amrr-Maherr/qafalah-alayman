@@ -15,6 +15,7 @@ import {
   FaPencilAlt,
   FaSave,
   FaTimes,
+  FaCar,
 } from "react-icons/fa";
 import NewsTicker from "../NewsTicker";
 
@@ -44,6 +45,11 @@ const validationSchema = Yup.object({
     roomType: Yup.string(),
     rooms: Yup.number().min(1, "يجب حجز غرفة واحدة على الأقل"),
     beds: Yup.number().min(1, "يجب اختيار سرير واحد على الأقل"),
+  }),
+  limousine: Yup.object({
+    title: Yup.string(),
+    vehicleType: Yup.string(),
+    bookingDate: Yup.date().required("تاريخ حجز الليموزين مطلوب"),
   }),
   user: Yup.object({
     fullName: Yup.string().required("الاسم الكامل مطلوب"),
@@ -76,6 +82,13 @@ export default function Confirmation() {
       rooms: travelData.hotel?.rooms || 0,
       beds: travelData.hotel?.beds || 0,
     },
+    limousine: {
+      title: travelData.limousine?.title || "",
+      vehicleType: travelData.limousine?.vehicleType || "",
+      pricePerHour: travelData.limousine?.pricePerHour || "",
+      amenities: travelData.limousine?.amenities || [],
+      bookingDate: travelData.limousine?.bookingDate || "",
+    },
     user: {
       fullName: travelData.user?.fullName || "",
       idNumber: travelData.user?.idNumber || "",
@@ -99,7 +112,21 @@ export default function Confirmation() {
             validationSchema={validationSchema}
             enableReinitialize
             onSubmit={(values) => {
-              localStorage.setItem("travelBooking", JSON.stringify(values));
+              const finalValues = {
+                ...values,
+                limousine: {
+                  ...values.limousine,
+                  amenities: Array.isArray(values.limousine.amenities)
+                    ? values.limousine.amenities
+                    : values.limousine.amenities
+                        .split(",")
+                        .map((item) => item.trim()),
+                },
+              };
+              localStorage.setItem(
+                "travelBooking",
+                JSON.stringify(finalValues)
+              );
               toast.success("تم حفظ وتأكيد البيانات بنجاح!");
               setIsEditing(false);
             }}
@@ -122,7 +149,9 @@ export default function Confirmation() {
                     )}
                   </div>
 
-                  {travelData.flight || travelData.hotel ? (
+                  {travelData.flight ||
+                  travelData.hotel ||
+                  travelData.limousine ? (
                     <div className="grid md:grid-cols-2 gap-6 mb-10">
                       {travelData.flight && (
                         <div className="bg-[#F2F2F2] p-6 rounded-2xl shadow-md">
@@ -279,6 +308,7 @@ export default function Confirmation() {
                           </div>
                         </div>
                       )}
+
                       {travelData.hotel && (
                         <div className="bg-[#F2F2F2] p-6 rounded-2xl shadow-md">
                           <h4 className="text-xl font-semibold text-right text-amber-600 mb-4 flex items-center">
@@ -380,6 +410,113 @@ export default function Confirmation() {
                                 component="div"
                                 className="text-red-500 text-sm"
                               />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {travelData.limousine && (
+                        <div className="bg-[#F2F2F2] p-6 rounded-2xl shadow-md md:col-span-2">
+                          <h4 className="text-xl font-semibold text-right text-amber-600 mb-4 flex items-center">
+                            <FaCar className="ml-2" /> تفاصيل الليموزين
+                          </h4>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-right text-gray-700">
+                            <div>
+                              <h5 className="font-semibold text-amber-600 mb-1">
+                                نوع الخدمة
+                              </h5>
+                              {isEditing ? (
+                                <Field
+                                  type="text"
+                                  name="limousine.title"
+                                  className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
+                                />
+                              ) : (
+                                <p className="text-gray-800">
+                                  {values.limousine.title}
+                                </p>
+                              )}
+                            </div>
+                            <div>
+                              <h5 className="font-semibold text-amber-600 mb-1">
+                                نوع المركبة
+                              </h5>
+                              {isEditing ? (
+                                <Field
+                                  as="select"
+                                  name="limousine.vehicleType"
+                                  className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
+                                >
+                                  <option value="">اختر نوع المركبة</option>
+                                  <option value="مرسيدس S-Class">
+                                    مرسيدس S-Class
+                                  </option>
+                                  <option value="BMW 7 Series">
+                                    BMW 7 Series
+                                  </option>
+                                  <option value="Cadillac Escalade">
+                                    Cadillac Escalade
+                                  </option>
+                                </Field>
+                              ) : (
+                                <p className="text-gray-800">
+                                  {values.limousine.vehicleType}
+                                </p>
+                              )}
+                            </div>
+                            <div>
+                              <h5 className="font-semibold text-amber-600 mb-1 flex items-center justify-end">
+                                <FaCalendarAlt className="ml-2" /> تاريخ الحجز
+                              </h5>
+                              {isEditing ? (
+                                <Field
+                                  type="date"
+                                  name="limousine.bookingDate"
+                                  className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
+                                />
+                              ) : (
+                                <p className="text-gray-800">
+                                  {values.limousine.bookingDate}
+                                </p>
+                              )}
+                              <ErrorMessage
+                                name="limousine.bookingDate"
+                                component="div"
+                                className="text-red-500 text-sm"
+                              />
+                            </div>
+                            <div className="md:col-span-2">
+                              <h5 className="font-semibold text-amber-600 mb-1">
+                                المميزات
+                              </h5>
+                              {isEditing ? (
+                                <Field
+                                  as="textarea"
+                                  name="limousine.amenities"
+                                  rows="3"
+                                  placeholder="اكتب المميزات مفصولة بفاصلة (,)"
+                                  className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600"
+                                  value={
+                                    Array.isArray(values.limousine.amenities)
+                                      ? values.limousine.amenities.join(", ")
+                                      : values.limousine.amenities
+                                  }
+                                />
+                              ) : (
+                                <div className="flex flex-wrap gap-2 justify-end mt-2">
+                                  {Array.isArray(values.limousine.amenities) &&
+                                    values.limousine.amenities.map(
+                                      (item, index) => (
+                                        <span
+                                          key={index}
+                                          className="bg-amber-100 text-amber-800 text-sm font-medium px-3 py-1 rounded-full"
+                                        >
+                                          {item}
+                                        </span>
+                                      )
+                                    )}
+                                </div>
+                              )}
                             </div>
                           </div>
                         </div>
