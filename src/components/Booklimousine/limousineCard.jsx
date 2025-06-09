@@ -255,10 +255,10 @@ export default function LimousineCard({ limousine }) {
                     </div>
 
                     {/* Booking Button */}
-                    <div className="flex justify-end">
+                    <div className="flex justify-start">
                       <button
                         type="button"
-                        className="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                        className="inline-flex items-center px-4 py-2 bg-[#B38124] text-white font-medium rounded-[40px]  transition-colors duration-200"
                         onClick={handleBooking}
                       >
                         <CalendarIcon className="h-5 w-5 ml-2" />
