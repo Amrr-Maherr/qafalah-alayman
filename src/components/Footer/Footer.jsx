@@ -147,7 +147,7 @@ function Footer() {
                     className="no-underline text-[16px] text-[#4D4D4D]"
                     href="#"
                   >
-                    الشروط والاحكام
+                    التراخيص
                   </a>
                 </li>
               </ul>

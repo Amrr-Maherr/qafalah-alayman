@@ -13,6 +13,8 @@ import FloatingContact from "./components/FloatingContact";
 import { Toaster } from "react-hot-toast";
 import Confirmation from "./components/Confirmation/Confirmation";
 import CustomerProtection from "./components/CustomerProtection/CustomerProtection";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+import Licenses from "./components/Licenses/Licenses";
 
 
 
@@ -29,6 +31,8 @@ const myRouter = createBrowserRouter([
       { path: "aboutUs", element: <AboutUs /> },
       { path: "confirmation", element: <Confirmation /> },
       { path: "CustomerProtection", element: <CustomerProtection /> },
+      { path: "PrivacyPolicy", element: <PrivacyPolicy /> },
+      { path: "Licenses", element: <Licenses /> },
       { path: "contact", element: <Contact /> },
       { path: "*", element: <NotFound /> },
     ],
