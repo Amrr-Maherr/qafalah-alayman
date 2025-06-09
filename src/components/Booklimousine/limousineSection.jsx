@@ -1,4 +1,4 @@
-import LimousineCard from "./LimousineCard";
+import LimousineCard from "../Booklimousine/limousineCard";
 import Image from "../../assets/pexels-evgeni-adutskevich-363025374-14809180.jpg"; // افتراض وجود صورة وهمية
 import Slider from "../Slider/Slider";
 import { SwiperSlide } from "swiper/react";
