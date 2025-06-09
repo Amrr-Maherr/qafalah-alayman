@@ -2,6 +2,7 @@ import HeroSection from "../Herocomponents/HeroSection";
 import Image from "../../assets/lemo.png";
 import AboutUsSection from "../AboutUsSection/AboutUsSection";
 import { FaCar, FaClock, FaUserTie, FaShieldAlt } from "react-icons/fa";
+import LimousineSection from "./limousineSection";
 
 export default function Booklimousine() {
   const aboutUsData = [
@@ -35,6 +36,7 @@ export default function Booklimousine() {
         description="تنقل فخم مع أسطول سيارات حديث وسائقين محترفين – احجز بسهولة."
         buttonText="اكتشف الآن"
       />
+      <LimousineSection/>
       <AboutUsSection
         data={aboutUsData}
         title="باقة من أفضل الخدمات"
