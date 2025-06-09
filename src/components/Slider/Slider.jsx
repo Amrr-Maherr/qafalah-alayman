@@ -12,6 +12,7 @@ export default function Slider({ children }) {
         freeMode={true}
         pagination={{
           clickable: true,
+          dynamicBullets: true
         }}
         modules={[FreeMode, Pagination]}
         className="mySwiper"
