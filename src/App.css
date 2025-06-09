@@ -66,3 +66,49 @@
     @apply bg-background text-foreground;
   }
 }
+.swiper-pagination-bullet {
+  background-color: rgba(128, 128, 128, 0.7);
+  /* لون النقاط الغير نشطة مع شفافية */
+  opacity: 1;
+  width: 12px;
+  /* عرض النقاط الغير نشطة */
+  height: 12px;
+  /* ارتفاع النقاط الغير نشطة */
+  border-radius: 6px;
+  /* حواف مستديرة */
+  transition: all 0.3s ease;
+  /* تأثير سلس عند التغيير */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* ظل خفيف */
+  margin: 0 5px !important;
+  /* مسافة بين النقاط */
+}
+
+.swiper-pagination-bullet:hover {
+  background-color: rgba(128, 128, 128, 0.9);
+  /* لون أغمق عند الـHover */
+  transform: scale(1.1);
+  /* تكبير النقطة قليلاً */
+}
+
+/* تنسيق النقطة النشطة (Active Bullet) */
+.swiper-pagination-bullet-active {
+  background-color: #FFD700 !important;
+  /* لون ذهبي للنقطة النشطة */
+  opacity: 1;
+  width: 30px !important;
+  height: 8px !important;
+  border-radius: 3px !important;
+  box-shadow: 0 3px 8px rgba(255, 215, 0, 0.5);
+  transition: all 0.3s ease;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  -ms-border-radius: 3px !important;
+  -o-border-radius: 3px !important;
+}
+
+/* تأثير Hover على النقطة النشطة */
+.swiper-pagination-bullet-active:hover {
+  transform: scale(1.05);
+  /* تكبير بسيط عند الـHover */
+}
