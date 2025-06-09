@@ -98,7 +98,7 @@ export default function LimousineSection() {
   ];
 
   return (
-    <section className="py-12 bg-[#FBF5EA]" dir="rtl">
+    <section className="py-12 bg-[#FBF5EA] my-5" dir="rtl">
       <div className="w-full px-4">
         <Slider>
           {LimousineData.map((limousine, index) => (

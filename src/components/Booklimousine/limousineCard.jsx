@@ -9,6 +9,7 @@ import {
   TruckIcon,
   StarIcon,
   XMarkIcon,
+  CalendarIcon,
 } from "@heroicons/react/24/outline";
 
 export default function LimousineCard({ limousine }) {
@@ -17,6 +18,11 @@ export default function LimousineCard({ limousine }) {
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+
+  const handleBooking = () => {
+    // يمكن استبدال هذا بوظيفة الحجز الفعلية (مثل طلب API أو إعادة توجيه)
+    alert(`تم طلب حجز ${limousine.title}`);
+  };
 
   return (
     <>
@@ -97,7 +103,7 @@ export default function LimousineCard({ limousine }) {
                 enter="ease-out duration-300"
                 enterFrom="opacity-0 scale-95"
                 enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
+                leave="ease-in duration-۲۰۰"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
@@ -213,6 +219,18 @@ export default function LimousineCard({ limousine }) {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                       ></iframe>
+                    </div>
+
+                    {/* Booking Button */}
+                    <div className="flex justify-end">
+                      <button
+                        type="button"
+                        className="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                        onClick={handleBooking}
+                      >
+                        <CalendarIcon className="h-5 w-5 ml-2" />
+                        حجز الآن
+                      </button>
                     </div>
                   </div>
                 </Dialog.Panel>
