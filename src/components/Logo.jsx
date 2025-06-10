@@ -1,4 +1,4 @@
-import Image from "../assets/logo (1) 1.png"
+import Image from "../assets/footerLogo.png"
 export default function Logo() {
     return (
         <>
