@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export default function LimousineCard({ limousine }) {
-    const nav = useNavigate()
+  const nav = useNavigate();
   const [hovered, setHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -56,7 +56,6 @@ export default function LimousineCard({ limousine }) {
     }, 1000);
   };
 
-
   return (
     <>
       <div
@@ -74,12 +73,12 @@ export default function LimousineCard({ limousine }) {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
         {/* Rating badge */}
-        <div className="absolute top-3 right-3 bg-yellow-400 text-black font-bold px-3 py-1 rounded-full shadow-md z-20">
+        <div className="absolute top-3 right-3 bg-white bg-opacity-20 text-white font-bold px-3 py-1 rounded-full shadow-md z-20">
           ⭐ {limousine.rating}
         </div>
 
         {/* Text content at bottom */}
-        <div className="absolute bottom-0 w-full p-4 text-white text-right z-10">
+        <div className="absolute bottom-0 w-full text-white text-right z-10 bg-white bg-opacity-20 p-5">
           <h2 className="text-xl font-bold drop-shadow-md">
             {limousine.title}
           </h2>
@@ -136,18 +135,18 @@ export default function LimousineCard({ limousine }) {
                 enter="ease-out duration-300"
                 enterFrom="opacity-0 scale-95"
                 enterTo="opacity-100 scale-100"
-                leave="ease-in duration-۲۰۰"
+                leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel
-                  className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white p-6 shadow-2xl transition-all relative"
+                  className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-[rgba(255,255,255,0.1)] backdrop-blur-lg border border-[rgba(255,255,255,0.2)] p-6 shadow-2xl transition-all relative"
                   dir="rtl"
                 >
                   {/* Close button */}
                   <button
                     type="button"
-                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                    className="absolute top-4 right-4 text-gray-300 hover:text-gray-100"
                     onClick={closeModal}
                   >
                     <XMarkIcon className="h-6 w-6" />
@@ -155,7 +154,7 @@ export default function LimousineCard({ limousine }) {
 
                   <Dialog.Title
                     as="h3"
-                    className="text-2xl font-bold text-gray-900 mb-4 text-right"
+                    className="text-2xl font-bold text-gray-100 mb-4 text-right"
                   >
                     {limousine.title}
                   </Dialog.Title>
@@ -170,10 +169,10 @@ export default function LimousineCard({ limousine }) {
 
                     {/* Description */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-800 text-right">
+                      <h4 className="text-lg font-semibold text-gray-100 text-right">
                         الوصف
                       </h4>
-                      <p className="text-gray-600 mt-2 text-right">
+                      <p className="text-gray-300 mt-2 text-right">
                         {limousine.description}
                       </p>
                     </div>
@@ -181,22 +180,22 @@ export default function LimousineCard({ limousine }) {
                     {/* Details Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="flex items-center space-x-reverse space-x-2">
-                        <TruckIcon className="h-5 w-5 text-blue-600" />
-                        <p className="text-sm text-right">
+                        <TruckIcon className="h-5 w-5 text-blue-400" />
+                        <p className="text-sm text-right text-gray-300">
                           <span className="font-semibold">نوع السيارة:</span>{" "}
                           {limousine.vehicleType}
                         </p>
                       </div>
                       <div className="flex items-center space-x-reverse space-x-2">
-                        <CurrencyDollarIcon className="h-5 w-5 text-blue-600" />
-                        <p className="text-sm text-right">
+                        <CurrencyDollarIcon className="h-5 w-5 text-blue-400" />
+                        <p className="text-sm text-right text-gray-300">
                           <span className="font-semibold">السعر للساعة:</span>{" "}
                           {limousine.pricePerHour}
                         </p>
                       </div>
                       <div className="flex items-center space-x-reverse space-x-2">
-                        <StarIcon className="h-5 w-5 text-blue-600" />
-                        <p className="text-sm text-right">
+                        <StarIcon className="h-5 w-5 text-blue-400" />
+                        <p className="text-sm text-right text-gray-300">
                           <span className="font-semibold">التقييم:</span>{" "}
                           {limousine.rating} ⭐
                         </p>
@@ -205,14 +204,14 @@ export default function LimousineCard({ limousine }) {
 
                     {/* Amenities */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-800 text-right">
+                      <h4 className="text-lg font-semibold text-gray-100 text-right">
                         المرافق
                       </h4>
                       <div className="flex flex-wrap gap-2 mt-2 justify-end">
                         {limousine.amenities.map((amenity, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full"
+                            className="inline-flex items-center px-3 py-1 bg-[rgba(255,255,255,0.2)] text-gray-100 text-sm font-medium rounded-full"
                           >
                             {amenity}
                           </span>
@@ -222,7 +221,7 @@ export default function LimousineCard({ limousine }) {
 
                     {/* Image Slider */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-800 text-right">
+                      <h4 className="text-lg font-semibold text-gray-100 text-right">
                         معرض الصور
                       </h4>
                       <div className="mt-2">
@@ -242,7 +241,7 @@ export default function LimousineCard({ limousine }) {
 
                     {/* Video */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-800 text-right">
+                      <h4 className="text-lg font-semibold text-gray-100 text-right">
                         فيديو تعريفي
                       </h4>
                       <iframe
@@ -258,7 +257,7 @@ export default function LimousineCard({ limousine }) {
                     <div className="flex justify-start">
                       <button
                         type="button"
-                        className="inline-flex items-center px-4 py-2 bg-[#B38124] text-white font-medium rounded-[40px]  transition-colors duration-200"
+                        className="inline-flex items-center px-4 py-2 bg-[rgba(255,255,255,0.3)] backdrop-blur-sm text-gray-100 font-medium rounded-[40px] hover:bg-[rgba(255,255,255,0.4)] transition-colors duration-200"
                         onClick={handleBooking}
                       >
                         <CalendarIcon className="h-5 w-5 ml-2" />

@@ -93,7 +93,7 @@
 
 /* تنسيق النقطة النشطة (Active Bullet) */
 .swiper-pagination-bullet-active {
-  background-color: #FFD700 !important;
+  background-color:white !important;
   /* لون ذهبي للنقطة النشطة */
   opacity: 1;
   width: 30px !important;

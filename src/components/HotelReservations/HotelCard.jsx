@@ -3,7 +3,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { SwiperSlide } from "swiper/react";
 import Slider from "../Slider/Slider";
-import { MapPinIcon, CurrencyDollarIcon, HomeIcon, StarIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  MapPinIcon,
+  CurrencyDollarIcon,
+  HomeIcon,
+  StarIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 export default function HotelCard({ hotel }) {
   const [hovered, setHovered] = useState(false);
@@ -29,12 +35,12 @@ export default function HotelCard({ hotel }) {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
         {/* Rating badge */}
-        <div className="absolute top-3 right-3 bg-yellow-400 text-black font-bold px-3 py-1 rounded-full shadow-md z-20">
+        <div className="absolute top-3 right-3 bg-white bg-opacity-20 text-white font-bold px-3 py-1 rounded-full shadow-md z-20">
           ⭐ {hotel.rating}
         </div>
 
         {/* Text content at bottom */}
-        <div className="absolute bottom-0 w-full p-4 text-white text-right z-10">
+        <div className="absolute bottom-0 w-full p-5 bg-white bg-opacity-20 text-white text-right z-10">
           <h2 className="text-xl font-bold drop-shadow-md">{hotel.title}</h2>
           <p className="text-sm opacity-90">{hotel.subTitle}</p>
         </div>
@@ -94,19 +100,22 @@ export default function HotelCard({ hotel }) {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel
-                  className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white p-6 shadow-2xl transition-all relative"
+                  className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-[rgba(255,255,255,0.1)] backdrop-blur-lg border border-[rgba(255,255,255,0.2)] p-6 shadow-2xl transition-all relative"
                   dir="rtl"
                 >
                   {/* Close button */}
                   <button
                     type="button"
-                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                    className="absolute top-4 right-4 text-gray-300 hover:text-gray-100"
                     onClick={closeModal}
                   >
                     <XMarkIcon className="h-6 w-6" />
                   </button>
 
-                  <Dialog.Title as="h3" className="text-2xl font-bold text-gray-900 mb-4 text-right">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-2xl font-bold text-gray-100 mb-4 text-right"
+                  >
                     {hotel.title}
                   </Dialog.Title>
 
@@ -120,46 +129,56 @@ export default function HotelCard({ hotel }) {
 
                     {/* Description */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-800 text-right">الوصف</h4>
-                      <p className="text-gray-600 mt-2 text-right">{hotel.description}</p>
+                      <h4 className="text-lg font-semibold text-gray-100 text-right">
+                        الوصف
+                      </h4>
+                      <p className="text-gray-300 mt-2 text-right">
+                        {hotel.description}
+                      </p>
                     </div>
 
                     {/* Details Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="flex items-center space-x-reverse space-x-2">
-                        <MapPinIcon className="h-5 w-5 text-blue-600" />
-                        <p className="text-sm text-right">
-                          <span className="font-semibold">الموقع:</span> {hotel.location}
+                        <MapPinIcon className="h-5 w-5 text-blue-400" />
+                        <p className="text-sm text-right text-gray-300">
+                          <span className="font-semibold">الموقع:</span>{" "}
+                          {hotel.location}
                         </p>
                       </div>
                       <div className="flex items-center space-x-reverse space-x-2">
-                        <CurrencyDollarIcon className="h-5 w-5 text-blue-600" />
-                        <p className="text-sm text-right">
-                          <span className="font-semibold">السعر لليلة:</span> {hotel.pricePerNight}
+                        <CurrencyDollarIcon className="h-5 w-5 text-blue-400" />
+                        <p className="text-sm text-right text-gray-300">
+                          <span className="font-semibold">السعر لليلة:</span>{" "}
+                          {hotel.pricePerNight}
                         </p>
                       </div>
                       <div className="flex items-center space-x-reverse space-x-2">
-                        <HomeIcon className="h-5 w-5 text-blue-600" />
-                        <p className="text-sm text-right">
-                          <span className="font-semibold">عدد الغرف:</span> {hotel.rooms}
+                        <HomeIcon className="h-5 w-5 text-blue-400" />
+                        <p className="text-sm text-right text-gray-300">
+                          <span className="font-semibold">عدد الغرف:</span>{" "}
+                          {hotel.rooms}
                         </p>
                       </div>
                       <div className="flex items-center space-x-reverse space-x-2">
-                        <StarIcon className="h-5 w-5 text-blue-600" />
-                        <p className="text-sm text-right">
-                          <span className="font-semibold">التقييم:</span> {hotel.rating} ⭐
+                        <StarIcon className="h-5 w-5 text-blue-400" />
+                        <p className="text-sm text-right text-gray-300">
+                          <span className="font-semibold">التقييم:</span>{" "}
+                          {hotel.rating} ⭐
                         </p>
                       </div>
                     </div>
 
                     {/* Amenities */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-800 text-right">المرافق</h4>
+                      <h4 className="text-lg font-semibold text-gray-100 text-right">
+                        المرافق
+                      </h4>
                       <div className="flex flex-wrap gap-2 mt-2 justify-end">
                         {hotel.amenities.map((amenity, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full"
+                            className="inline-flex items-center px-3 py-1 bg-[rgba(255,255,255,0.2)] text-gray-100 text-sm font-medium rounded-full"
                           >
                             {amenity}
                           </span>
@@ -169,7 +188,9 @@ export default function HotelCard({ hotel }) {
 
                     {/* Image Slider */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-800 text-right">معرض الصور</h4>
+                      <h4 className="text-lg font-semibold text-gray-100 text-right">
+                        معرض الصور
+                      </h4>
                       <div className="mt-2">
                         <Slider>
                           {hotel.galleryImages.map((img, index) => (
@@ -187,7 +208,9 @@ export default function HotelCard({ hotel }) {
 
                     {/* Video */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-800 text-right">فيديو تعريفي</h4>
+                      <h4 className="text-lg font-semibold text-gray-100 text-right">
+                        فيديو تعريفي
+                      </h4>
                       <iframe
                         className="w-full h-64 mt-2 rounded-lg shadow-md"
                         src={hotel.videoUrl}

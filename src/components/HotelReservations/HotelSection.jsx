@@ -199,7 +199,7 @@ export default function HotelSection() {
       
       
   return (
-    <section className="py-12 bg-[#FBF5EA] my-5">
+    <section className="py-12 my-5">
       <div className="w-full px-4">
         <Slider>
           {HotelData.map((ele, index) => (
