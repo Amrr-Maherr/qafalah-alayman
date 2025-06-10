@@ -11,7 +11,7 @@ export default function HeroSection({
     <>
       <Navbar />
       <section
-        className="min-h-screen relative flex items-center justify-center m-4 rounded-[40px] overflow-hidden"
+        className="min-h-screen relative flex items-center justify-center m-4 rounded-[80px] overflow-hidden"
         style={{
           backgroundImage: `url(${BackGroundImage})`,
           backgroundRepeat: "no-repeat",
