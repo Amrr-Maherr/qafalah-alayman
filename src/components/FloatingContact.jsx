@@ -7,10 +7,10 @@ export default function FloatingContact() {
       <div className="fixed bottom-8 right-6 flex flex-col gap-4 z-50">
         {/* أيقونة الواتساب */}
         <a
-          href="https://wa.me/966543051342" // غير الرقم هنا لرقم الواتساب الخاص بك
+          href="https://wa.me/966543051342"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center transition-transform transform hover:scale-110"
+          className="backdrop-blur-md bg-white/10 border border-white/20 text-white p-4 rounded-full shadow-xl flex items-center justify-center transition-all hover:scale-110 hover:bg-white/20"
           aria-label="WhatsApp"
         >
           <MessageCircle size={28} />
@@ -18,8 +18,8 @@ export default function FloatingContact() {
 
         {/* أيقونة الاتصال */}
         <a
-          href="tel:+966543051342" // غير الرقم هنا لرقم الاتصال الخاص بك
-          className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg flex items-center justify-center transition-transform transform hover:scale-110"
+          href="tel:+966543051342"
+          className="backdrop-blur-md bg-white/10 border border-white/20 text-white p-4 rounded-full shadow-xl flex items-center justify-center transition-all hover:scale-110 hover:bg-white/20"
           aria-label="Call Phone"
         >
           <Phone size={28} />
