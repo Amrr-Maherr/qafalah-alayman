@@ -35,10 +35,10 @@ export default function HotelReservations() {
         BackGroundImage={Image}
         title="احجز فندقك في مكة أو المدينة بسهولة"
         description="خيارات متنوعة قريبة من الحرم تناسب جميع الميزانيات."
-        buttonText="اكتشف الآن"
-      />
+      >
+        <HotelForm />
+      </HeroSection>
       <HotelSection />
-      <HotelForm />
       <AboutUsSection
         data={aboutUsData}
         title="مميزات حجز الفنادق لدينا"
