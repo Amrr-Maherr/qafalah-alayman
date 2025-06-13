@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <>
       {/* <NewsTicker /> */}
-      <nav className="flex items-center justify-between  text-black px-4 py-2">
+      <nav className="flex items-center justify-between  text-black px-[96px] py-2">
         <button
           className="md:hidden order-1 p-2 rounded-md hover:bg-gray-700 transition"
           onClick={() => setSidebarOpen(true)}

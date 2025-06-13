@@ -42,8 +42,9 @@ export default function FlightReservation() {
         title="رحلات داخلية لمكة والمدينة بأفضل الأسعار"
         description="سافر بأمان وراحة مع أفضل شركات الطيران السعودية."
         buttonText="اكتشف الآن"
-      />
-      <FlightForm />
+      >
+        <FlightForm />
+      </HeroSection>
       <AboutUsSection
         data={aboutUsData}
         title="لماذا تختار منصتنا !"
