@@ -49,11 +49,12 @@ export default function FlightReservation() {
         description="سافر بأمان وراحة مع أفضل شركات الطيران السعودية."
         buttonText="اكتشف الآن"
       >
-        {Data ? <HotelForm/> : <FlightForm /> }
+        {Data ? <HotelForm /> : <FlightForm />}
       </HeroSection>
       <HotelSection />
-      <LimousineSection/>
+      <LimousineSection />
       <AboutUsSection
+        bgColor="bg-gray-200"
         data={aboutUsData}
         title="لماذا تختار منصتنا !"
         description="استمتع مع اقوى الخدمات و افضل الباقات من قافلة الايمان"

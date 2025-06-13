@@ -2,7 +2,7 @@ import AboutUsBox from "./AboutUsBox";
 
 export default function AboutUsSection({ data, title, description,bgColor }) {
   return (
-    <section className={`${bgColor || "bg-white"} py-20 px-4`}>
+    <section className={`${bgColor || "bg-white"} py-20 px-4 my-5`}>
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-extrabold text-gray-800">{title}</h2>
