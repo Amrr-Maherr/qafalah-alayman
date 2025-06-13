@@ -1,4 +1,4 @@
-import Image from "../../assets/4777100_Man_Businessman_3840x2160.mp4";
+import Image from "../../assets/Generated File June 13, 2025 - 8_22PM.mp4";
 import AboutUsSection from "../AboutUsSection/AboutUsSection";
 import LimousineSection from "../Booklimousine/limousineSection";
 import HeroSection from "../Herocomponents/HeroSection";
