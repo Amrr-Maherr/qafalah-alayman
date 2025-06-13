@@ -1,4 +1,4 @@
-import Image from "../../assets/hotel.png";
+import Image from "../../assets/4777100_Man_Businessman_3840x2160.mp4";
 import AboutUsSection from "../AboutUsSection/AboutUsSection";
 import HeroSection from "../Herocomponents/HeroSection";
 import HotelForm from "./HotelForm";
@@ -32,7 +32,8 @@ export default function HotelReservations() {
   return (
     <>
       <HeroSection
-        BackGroundImage={Image}
+        backgroundType="video"
+        backgroundSrc={Image}
         title="احجز فندقك في مكة أو المدينة بسهولة"
         description="خيارات متنوعة قريبة من الحرم تناسب جميع الميزانيات."
       >

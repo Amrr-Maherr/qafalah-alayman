@@ -31,7 +31,8 @@ function AboutUs() {
   return (
     <>
       <HeroSection
-        BackGroundImage={Image}
+         backgroundType="image"
+          backgroundSrc={Image}
         title="رحلتك تبدأ من هنا بثقة وراحة"
         description="نقدّم حلول سفر متكاملة تشمل حجز رحلات العمرة، الإقامة الفندقية، وخدمات الليموزين، بأسلوب احترافي يراعي أعلى معايير الراحة، الأمان، والدقة في المواعيد."
         buttonText="اكتشف الآن"

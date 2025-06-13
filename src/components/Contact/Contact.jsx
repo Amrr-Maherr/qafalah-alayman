@@ -35,7 +35,8 @@ export default function ContactUsPage() {
   return (
     <>
       <HeroSection
-        BackGroundImage={Image}
+         backgroundType="image"
+                backgroundSrc={Image}
         title="ابدأ رحلة تواصلك معنا !"
         description="نعمل باستمرار لجعل تجربتك من خلال خدماتنا أسهل, سنقوم بالرد على رسالتكم في اقرب وقت ممكن."
         buttonText="اكتشف الآن"

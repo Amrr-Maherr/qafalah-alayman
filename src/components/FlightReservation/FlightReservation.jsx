@@ -38,7 +38,8 @@ export default function FlightReservation() {
   return (
     <>
       <HeroSection
-        BackGroundImage={Image}
+        backgroundType="image"
+        backgroundSrc={Image}
         title="رحلات داخلية لمكة والمدينة بأفضل الأسعار"
         description="سافر بأمان وراحة مع أفضل شركات الطيران السعودية."
         buttonText="اكتشف الآن"
