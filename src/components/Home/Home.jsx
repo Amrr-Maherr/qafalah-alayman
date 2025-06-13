@@ -6,7 +6,6 @@ import HomeOverLay from "./HomeOverLay"
 function Home() {
   return (
     <>
-      <NewsTicker/>
       <section
         className="min-h-screen relative"
         style={{

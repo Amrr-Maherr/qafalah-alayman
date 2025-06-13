@@ -2,7 +2,7 @@ import React from "react";
 
 export default function NewsTicker() {
   return (
-    <div className="bg-[#B38124] text-white py-2 overflow-hidden whitespace-nowrap">
+    <div className="bg-white text-black py-2 overflow-hidden whitespace-nowrap">
       <div className="animate-ticker inline-block px-4">
         {/* نص الأخبار */}
         <span className="mx-8">
