@@ -31,12 +31,6 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="flex items-center gap-2  transition cursor-pointer">
-            <Car size={22} />
-            <Link to="/limousine" className="hover:underline">
-              حجز ليموزين
-            </Link>
-          </li>
-          <li className="flex items-center gap-2  transition cursor-pointer">
             <Phone size={22} />
             <Link to="/contact" className="hover:underline">
               تواصل معنا
@@ -83,16 +77,6 @@ export default function Navbar() {
               className="text-white hover:underline"
             >
               حجز الطيران والفنادق
-            </Link>
-          </li>
-          <li className="flex items-center gap-3 transition hover:bg-white/10 rounded-lg p-2 cursor-pointer">
-            <Car size={24} color="white" />
-            <Link
-              to="/limousine"
-              onClick={handleLinkClick}
-              className="text-white hover:underline"
-            >
-              حجز ليموزين
             </Link>
           </li>
           <li className="flex items-center gap-3 transition hover:bg-white/10 rounded-lg p-2 cursor-pointer">
