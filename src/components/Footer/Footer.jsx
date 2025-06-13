@@ -16,7 +16,7 @@ function Footer() {
 
   return (
     <motion.div
-      className="footer py-4 md:py-6 bg-[#FBF5EA]"
+      className="footer py-4 md:py-6 bg-gray-200"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -33,7 +33,7 @@ function Footer() {
           viewport={{ once: true }}
         >
           <div className="footerInfo">
-            <h2 className="text-[24px] leading-[150%] font-bold text-[#B38124]">
+            <h2 className="text-[24px] leading-[150%] font-bold text-black">
               سجل دخولك الي موقعنا...
             </h2>
             <p className="text-[#4D4D4D] text-[18px] font-normal text-end">
@@ -48,7 +48,7 @@ function Footer() {
               type="email"
               placeholder="أدخل ايميلك"
             />
-            <button className="footerSubscribeBtn py-[10px] px-[24px] rounded-[60px] bg-[#B38124] text-white">
+            <button className="footerSubscribeBtn py-[10px] px-[24px] rounded-[60px] bg-white text-black bg-opacity-20 shadow-lg">
               <a href="#">أشترك الان</a>
             </button>
           </div>
@@ -75,7 +75,7 @@ function Footer() {
                 تناسب ميزانيتك وأسلوب حياتك
               </p>
             </div>
-            <div className="footerSocialMedia text-[#B38124] my-3 flex justify-center md:justify-start items-center gap-1">
+            <div className="footerSocialMedia text-black my-3 flex justify-center md:justify-start items-center gap-1">
               <a href="#" target="_blank">
                 <FaFacebook size={24} />
               </a>
@@ -98,7 +98,7 @@ function Footer() {
           {/* روابط */}
           <div className="footerLinks w-full md:w-2/3 flex md:flex-row flex-col gap-5 md:gap-0 items-start justify-between">
             <div className="companyLinks text-center md:w-1/3 w-full">
-              <h2 className="text-[18px] font-bold text-[#B38124]">الشركه</h2>
+              <h2 className="text-[18px] font-bold text-black">الشركه</h2>
               <ul className="list-none">
                 <li>
                   <Link className="text-[#4D4D4D] text-[16px]" to={"/Flight"}>
@@ -132,7 +132,7 @@ function Footer() {
             </div>
 
             <div className="policies text-center md:w-1/3 w-full">
-              <h2 className="text-[18px] font-bold text-[#B38124]">السياسات</h2>
+              <h2 className="text-[18px] font-bold text-black">السياسات</h2>
               <ul className="list-none">
                 <li>
                   <Link
@@ -154,7 +154,7 @@ function Footer() {
             </div>
 
             <div className="support text-center md:w-1/3 w-full">
-              <h2 className="text-[18px] font-bold text-[#B38124]">
+              <h2 className="text-[18px] font-bold text-black">
                 المساعدة والدعم
               </h2>
               <ul className="list-none">
@@ -186,7 +186,7 @@ function Footer() {
             href={`https://wa.me/${contact.number.replace("+", "")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="footerContactBtn rounded-[60px] py-[10px] px-[24px] bg-[#B38124] text-white flex items-center gap-1"
+            className="footerContactBtn rounded-[60px] py-[10px] px-[24px] bg-white bg-opacity-20 shadow-lg text-black flex items-center gap-1"
           >
             {contact.label}{" "}
             <PiPhoneCall size={24} style={{ transform: "rotate(270deg)" }} />
@@ -198,7 +198,7 @@ function Footer() {
           جميع الحقوق محفوظة © {new Date().getFullYear()} —
           <a
             href="https://neon-code-nest.vercel.app/"
-            className="text-[#B38124] font-semibold"
+            className="text-blue-500 font-semibold"
           >
             {" "}
             DevNest{" "}

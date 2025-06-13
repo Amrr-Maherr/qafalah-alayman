@@ -2,7 +2,7 @@ import Image from "../../assets/Rectangle 440.png";
 export default function About() {
   return (
     <>
-      <section className="bg-[#FBF5EA9C] py-12 my-5">
+      <section className="bg-gray-200 py-12 my-5">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* الصورة على الشمال */}
@@ -25,7 +25,7 @@ export default function About() {
                 الحلول لتيسير أداء المناسك وتحسين ظروف السفر والإقامة للحفاظ على
                 ذهن صاف وقلب مطمئن .. نتمنى لكم رحلة سعيدة وطاعة جديدة
               </p>
-              <button className="bg-[#B38124] text-white px-6 py-3 rounded-[40px] hover:bg-amber-600 transition">
+              <button className="bg-gray-800 text-white px-6 py-3 rounded-[40px] hover:bg-amber-600 transition">
                 احجز رحلتك الان
               </button>
             </div>

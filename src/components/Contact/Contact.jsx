@@ -20,23 +20,23 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 export default function ContactUsPage() {
   const aboutUsData = [
     {
-      icon: <FaEnvelope className="text-amber-500 " />,
+      icon: <FaEnvelope className="text-gray-800 " />,
       text: "Qafalah-alayman@gmail.com",
     },
     {
-      icon: <FaMapMarkerAlt className="text-amber-500 " />,
+      icon: <FaMapMarkerAlt className="text-gray-800 " />,
       text: "الرياض، المملكة العربية السعودية",
     },
     {
-      icon: <FaPhone className="text-amber-500" />,
+      icon: <FaPhone className="text-gray-800" />,
       text: "+966 11 234 5678",
     },
   ];
   return (
     <>
       <HeroSection
-         backgroundType="image"
-                backgroundSrc={Image}
+        backgroundType="image"
+        backgroundSrc={Image}
         title="ابدأ رحلة تواصلك معنا !"
         description="نعمل باستمرار لجعل تجربتك من خلال خدماتنا أسهل, سنقوم بالرد على رسالتكم في اقرب وقت ممكن."
         buttonText="اكتشف الآن"
@@ -66,25 +66,25 @@ export default function ContactUsPage() {
                   <span className="font-semibold text-gray-700">
                     الرياض، المملكة العربية السعودية
                   </span>
-                  <FaMapMarkerAlt className="text-2xl text-amber-500" />
+                  <FaMapMarkerAlt className="text-2xl text-gray-800" />
                 </div>
                 <div className="flex items-center justify-end gap-4">
                   <a
                     href="tel:+966112345678"
-                    className="font-semibold text-gray-700 hover:text-amber-600 transition-colors"
+                    className="font-semibold text-gray-800  transition-colors"
                   >
                     +966 11 234 5678
                   </a>
-                  <FaPhone className="text-2xl text-amber-500" />
+                  <FaPhone className="text-2xl text-gray-800" />
                 </div>
                 <div className="flex items-center justify-end gap-4">
                   <a
                     href="mailto:support@example.com"
-                    className="font-semibold text-gray-700 hover:text-amber-600 transition-colors"
+                    className="font-semibold text-gray-700 transition-colors"
                   >
                     support@example.com
                   </a>
-                  <FaEnvelope className="text-2xl text-amber-500" />
+                  <FaEnvelope className="text-2xl text-gray-800" />
                 </div>
               </div>
 
@@ -246,7 +246,7 @@ export default function ContactUsPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-[#B38124] text-white font-bold py-3 px-6 rounded-[50px] hover:bg-amber-600 transition-all duration-300 disabled:bg-gray-400"
+                        className="w-full bg-gray-800 text-white font-bold py-3 px-6 rounded-[50px] transition-all duration-300 disabled:bg-gray-400"
                       >
                         {isSubmitting ? "جاري الإرسال..." : "إرسال الرسالة"}
                       </button>

@@ -15,7 +15,7 @@ export default function OurMessage() {
           <div className="p-6 rounded shadow box text-end bg-gray-50">
             <h3 className="text-xl font-semibold mb-2 flex items-center justify-end gap-2">
               <span>رسالتنا</span>
-              <FaPaperPlane className="text-amber-500" />
+              <FaPaperPlane className="text-gray-800" />
             </h3>
             <p className="text-gray-600">
               نحن شركة متخصصة في تقديم خدمات السفر والضيافة، نُسهّل على عملائنا
@@ -27,7 +27,7 @@ export default function OurMessage() {
           <div className="p-6 rounded shadow box text-end bg-gray-50">
             <h3 className="text-xl font-semibold mb-2 flex items-center justify-end gap-2">
               <span>رؤيتنا</span>
-              <FaBullseye className="text-amber-500" />
+              <FaBullseye className="text-gray-800" />
             </h3>
             <p className="text-gray-600">
               أن نكون الخيار الأول للحجاج والمعتمرين في العالم العربي، من خلال
