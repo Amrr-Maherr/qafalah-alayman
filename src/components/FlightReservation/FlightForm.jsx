@@ -58,9 +58,7 @@ export default function FlightForm() {
         fontSize: "16px",
       },
     });
-    setTimeout(() => {
-      navigate("/Hotel");
-    }, 2000);
+    window.location.reload();
     setSubmitting(false);
   };
 

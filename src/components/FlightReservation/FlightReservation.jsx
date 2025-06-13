@@ -1,6 +1,7 @@
 import Image from "../../assets/fly.png";
 import AboutUsSection from "../AboutUsSection/AboutUsSection";
 import HeroSection from "../Herocomponents/HeroSection";
+import HotelForm from "../HotelReservations/HotelForm";
 import FlightForm from "./FlightForm";
 
 // استيراد الأيقونات المناسبة
@@ -12,6 +13,8 @@ import {
 } from "react-icons/fa";
 
 export default function FlightReservation() {
+  const flightBooking = localStorage.getItem("flightBooking");
+  const Data = JSON.parse(flightBooking);
   const aboutUsData = [
     {
       icon: <FaHandsHelping />,
@@ -44,7 +47,7 @@ export default function FlightReservation() {
         description="سافر بأمان وراحة مع أفضل شركات الطيران السعودية."
         buttonText="اكتشف الآن"
       >
-        <FlightForm />
+        {Data ? <HotelForm/> : <FlightForm /> }
       </HeroSection>
       <AboutUsSection
         data={aboutUsData}
