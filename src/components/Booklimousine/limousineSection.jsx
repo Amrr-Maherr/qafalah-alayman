@@ -2,6 +2,7 @@ import LimousineCard from "../Booklimousine/limousineCard";
 import Image from "../../assets/pexels-evgeni-adutskevich-363025374-14809180.jpg"; // افتراض وجود صورة وهمية
 import Slider from "../Slider/Slider";
 import { SwiperSlide } from "swiper/react";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 export default function LimousineSection() {
   const LimousineData = [
@@ -99,6 +100,7 @@ export default function LimousineSection() {
 
   return (
     <section className="py-12  my-5" dir="rtl">
+      <SectionTitle title="افضل خدمات الليموزين" />
       <div className="w-full px-4">
         <Slider>
           {LimousineData.map((limousine, index) => (

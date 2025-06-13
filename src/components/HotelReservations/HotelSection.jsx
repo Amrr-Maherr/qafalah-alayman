@@ -2,6 +2,7 @@ import HotelCard from "./HotelCard";
 import Image from "../../assets/Group 19.png";
 import Slider from "../Slider/Slider";
 import { SwiperSlide } from "swiper/react";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 export default function HotelSection() {
     const HotelData = [
@@ -200,13 +201,12 @@ export default function HotelSection() {
       
   return (
     <section className="py-12 my-5">
+      <SectionTitle title="تمتع مع مجموعة من افضل الفنادق" />
       <div className="w-full px-4">
         <Slider>
           {HotelData.map((ele, index) => (
             <SwiperSlide key={index}>
-              <HotelCard
-                hotel={ele}
-              />
+              <HotelCard hotel={ele} />
             </SwiperSlide>
           ))}
         </Slider>

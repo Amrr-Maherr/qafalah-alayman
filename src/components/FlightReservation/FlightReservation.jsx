@@ -1,7 +1,9 @@
 import Image from "../../assets/fly.png";
 import AboutUsSection from "../AboutUsSection/AboutUsSection";
+import LimousineSection from "../Booklimousine/limousineSection";
 import HeroSection from "../Herocomponents/HeroSection";
 import HotelForm from "../HotelReservations/HotelForm";
+import HotelSection from "../HotelReservations/HotelSection";
 import FlightForm from "./FlightForm";
 
 // استيراد الأيقونات المناسبة
@@ -49,6 +51,8 @@ export default function FlightReservation() {
       >
         {Data ? <HotelForm/> : <FlightForm /> }
       </HeroSection>
+      <HotelSection />
+      <LimousineSection/>
       <AboutUsSection
         data={aboutUsData}
         title="لماذا تختار منصتنا !"

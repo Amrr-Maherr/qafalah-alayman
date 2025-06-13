@@ -9,7 +9,7 @@ export default function Slider({ children }) {
   return (
     <Swiper
       spaceBetween={5}
-      freeMode={true}
+      freeMode={false}
       pagination={{
         clickable: true,
         dynamicBullets: true,
