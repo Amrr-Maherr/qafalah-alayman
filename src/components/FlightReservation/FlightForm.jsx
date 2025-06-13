@@ -70,7 +70,7 @@ export default function FlightForm() {
   };
 
   return (
-    <main className="flex items-center justify-center p-4">
+    <main className="flex items-center justify-center px-2 py-1">
       <Toaster />
       <Formik
         initialValues={{
@@ -332,7 +332,7 @@ export default function FlightForm() {
             </div>
 
             {/* Submit Button */}
-            <div className="col-span-1 sm:col-span-2 lg:col-span-4 flex justify-center pt-6">
+            <div className="col-span-1 sm:col-span-2 lg:col-span-4 flex justify-center pt-2">
               <button
                 type="submit"
                 disabled={isSubmitting}
