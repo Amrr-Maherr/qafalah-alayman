@@ -27,7 +27,7 @@ export default function Slider({ children }) {
           slidesPerView: 3,
         },
         1280: {
-          slidesPerView: 4,
+          slidesPerView: 5,
         },
       }}
     >
