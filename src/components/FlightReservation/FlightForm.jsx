@@ -3,12 +3,19 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { PlaneTakeoff, PlaneLanding, CalendarDays, Users } from "lucide-react";
+import {
+  PlaneTakeoff,
+  PlaneLanding,
+  CalendarDays,
+  Users,
+  Plane,
+} from "lucide-react";
 
 // Validation schema
 const validationSchema = Yup.object({
   departureCity: Yup.string().required("وجهة المغادرة مطلوبة"),
   returnCity: Yup.string().required("وجهة العودة مطلوبة"),
+  airline: Yup.string().required("اختيار شركة الطيران مطلوب"),
   departureDate: Yup.date()
     .required("تاريخ المغادرة مطلوب")
     .min(
@@ -69,6 +76,7 @@ export default function FlightForm() {
         initialValues={{
           departureCity: "",
           returnCity: "",
+          airline: "",
           departureDate: "",
           returnDate: "",
           adults: 1,
@@ -113,7 +121,7 @@ export default function FlightForm() {
                   as="select"
                   name="returnCity"
                   id="returnCity"
-                  className="w-full appearance-none border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                  className="w-full appearance-none border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white"
                 >
                   <option value="" disabled hidden>
                     اختر وجهة العودة...
@@ -149,6 +157,58 @@ export default function FlightForm() {
               </div>
             </div>
 
+            {/* Airline Select */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <p className="text-2xl font-semibold text-white">
+                  شركة الطيران
+                </p>
+                <Plane className="text-white" />
+              </div>
+              <div className="relative">
+                <Field
+                  as="select"
+                  name="airline"
+                  id="airline"
+                  className="w-full appearance-none border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white"
+                >
+                  <option value="" disabled hidden>
+                    اختر شركة الطيران...
+                  </option>
+                  <option value="مصر للطيران" className="text-black">
+                    مصر للطيران
+                  </option>
+                  <option value="الخطوط السعودية" className="text-black">
+                    الخطوط السعودية
+                  </option>
+                  <option value="الخطوط القطرية" className="text-black">
+                    الخطوط القطرية
+                  </option>
+                  <option value="طيران الإمارات" className="text-black">
+                    طيران الإمارات
+                  </option>
+                </Field>
+                <svg
+                  className="w-4 h-4 absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+                <ErrorMessage
+                  name="airline"
+                  component="div"
+                  className="text-xs text-red-600 font-semibold mt-1"
+                />
+              </div>
+            </div>
+
             {/* Departure Date */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -167,7 +227,7 @@ export default function FlightForm() {
                     setFieldValue("departureDate", e.target.value);
                     setMinReturnDate(e.target.value);
                   }}
-                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white"
                 />
                 <ErrorMessage
                   name="departureDate"
@@ -191,7 +251,7 @@ export default function FlightForm() {
                   name="returnDate"
                   id="returnDate"
                   min={minReturnDate}
-                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white"
                 />
                 <ErrorMessage
                   name="returnDate"
@@ -213,7 +273,7 @@ export default function FlightForm() {
                   name="adults"
                   id="adults"
                   min="1"
-                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white"
                 />
                 <ErrorMessage
                   name="adults"
@@ -237,7 +297,7 @@ export default function FlightForm() {
                   name="children"
                   id="children"
                   min="0"
-                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white"
                 />
                 <ErrorMessage
                   name="children"
@@ -261,7 +321,7 @@ export default function FlightForm() {
                   name="seniors"
                   id="seniors"
                   min="0"
-                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white"
                 />
                 <ErrorMessage
                   name="seniors"
