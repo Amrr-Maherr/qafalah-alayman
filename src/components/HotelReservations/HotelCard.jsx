@@ -21,7 +21,7 @@ export default function HotelCard({ hotel }) {
   return (
     <>
       <div
-        className="relative w-64 h-[443px] rounded-xl overflow-hidden shadow-lg cursor-pointer transition-transform"
+        className="relative w-auto h-[334px] rounded-xl overflow-hidden shadow-lg cursor-pointer transition-transform"
         style={{
           backgroundImage: `url(${hotel.image})`,
           backgroundSize: "cover",

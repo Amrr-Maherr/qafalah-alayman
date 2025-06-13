@@ -8,7 +8,7 @@ import React from "react";
 export default function Slider({ children }) {
   return (
     <Swiper
-      spaceBetween={5}
+      spaceBetween={15}
       freeMode={false}
       pagination={{
         clickable: true,
@@ -27,7 +27,7 @@ export default function Slider({ children }) {
           slidesPerView: 3,
         },
         1280: {
-          slidesPerView: 5,
+          slidesPerView: 4,
         },
       }}
     >

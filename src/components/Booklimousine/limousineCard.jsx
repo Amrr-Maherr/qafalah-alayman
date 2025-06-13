@@ -59,7 +59,7 @@ export default function LimousineCard({ limousine }) {
   return (
     <>
       <div
-        className="relative w-64 h-[443px] rounded-xl overflow-hidden shadow-lg cursor-pointer transition-transform"
+        className="relative w-auto h-[443px] rounded-xl overflow-hidden shadow-lg cursor-pointer transition-transform"
         style={{
           backgroundImage: `url(${limousine.image})`,
           backgroundSize: "cover",
