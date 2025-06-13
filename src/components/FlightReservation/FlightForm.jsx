@@ -3,14 +3,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import {
-  PlaneTakeoff,
-  PlaneLanding, // <-- هذا هو التصحيح
-  CalendarDays,
-  Users,
-} from "lucide-react";
+import { PlaneTakeoff, PlaneLanding, CalendarDays, Users } from "lucide-react";
 
-// مخطط التحقق من الصحة (بدون تغيير)
+// Validation schema
 const validationSchema = Yup.object({
   departureCity: Yup.string().required("وجهة المغادرة مطلوبة"),
   returnCity: Yup.string().required("وجهة العودة مطلوبة"),
@@ -36,13 +31,6 @@ const validationSchema = Yup.object({
     .min(0, "عدد كبار السن لا يمكن أن يكون سالبًا")
     .required("عدد كبار السن مطلوب"),
 });
-
-// كومبونانت الأيقونة القابل لإعادة الاستخدام
-const FieldIcon = ({ icon: Icon }) => (
-  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/60">
-    <Icon className="h-6 w-6 text-slate-700" />
-  </div>
-);
 
 export default function FlightForm() {
   const [minDepartureDate, setMinDepartureDate] = useState("");
@@ -93,219 +81,208 @@ export default function FlightForm() {
         onSubmit={handleSubmit}
       >
         {({ setFieldValue, isSubmitting }) => (
-          <Form className="flex w-full max-w-4xl flex-col items-center gap-8 text-right">
-            {/* الصف الأول: معلومات الرحلة */}
-            <div
-              className="
-                w-full rounded-2xl border border-white/50 bg-white/40
-                shadow-xl backdrop-blur-xl
-                flex flex-col md:flex-row
-                divide-y divide-white/50 md:divide-y-0 md:divide-x-reverse
-              "
-            >
-              {/* وجهة المغادرة */}
-              <div className="flex flex-1 items-center justify-between gap-4 p-4">
-                <div className="flex w-full flex-col gap-1.5">
-                  <label
-                    htmlFor="departureCity"
-                    className="font-bold text-sm text-slate-800"
-                  >
-                    من
-                  </label>
-                  <Field
-                    type="text"
-                    name="departureCity"
-                    id="departureCity"
-                    placeholder="مثال: القاهرة"
-                    className="w-full bg-transparent text-slate-600 focus:outline-none placeholder:text-slate-400"
-                  />
-                  <ErrorMessage
-                    name="departureCity"
-                    component="div"
-                    className="text-xs text-red-600 font-semibold"
-                  />
-                </div>
-                <FieldIcon icon={PlaneTakeoff} />
+          <Form className="max-w-[1248px] mx-auto bg-white bg-opacity-25 py-8 px-4 rounded-3xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-right">
+            {/* Departure City */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <p className="text-2xl font-semibold text-white">من</p>
+                <PlaneTakeoff className="text-white" />
               </div>
-
-              {/* وجهة العودة */}
-              <div className="flex flex-1 items-center justify-between gap-4 p-4">
-                <div className="flex w-full flex-col gap-1.5">
-                  <label
-                    htmlFor="returnCity"
-                    className="font-bold text-sm text-slate-800"
-                  >
-                    إلى
-                  </label>
-                  <Field
-                    as="select"
-                    name="returnCity"
-                    id="returnCity"
-                    className="w-full appearance-none bg-transparent text-slate-600 focus:outline-none"
-                  >
-                    <option value="">اختر وجهة العودة...</option>
-                    <option value="جدة">جدة</option>
-                    <option value="الطائف">الطائف</option>
-                    <option value="المدينة">المدينة</option>
-                  </Field>
-                  <ErrorMessage
-                    name="returnCity"
-                    component="div"
-                    className="text-xs text-red-600 font-semibold"
-                  />
-                </div>
-                <FieldIcon icon={PlaneLanding} />{" "}
-                {/* <-- هنا أيضًا تم التصحيح */}
-              </div>
-
-              {/* تاريخ المغادرة */}
-              <div className="flex flex-1 items-center justify-between gap-4 p-4">
-                <div className="flex w-full flex-col gap-1.5">
-                  <label
-                    htmlFor="departureDate"
-                    className="font-bold text-sm text-slate-800"
-                  >
-                    تاريخ المغادرة
-                  </label>
-                  <Field
-                    type="date"
-                    name="departureDate"
-                    id="departureDate"
-                    min={minDepartureDate}
-                    onChange={(e) => {
-                      setFieldValue("departureDate", e.target.value);
-                      setMinReturnDate(e.target.value);
-                    }}
-                    className="w-full bg-transparent text-slate-600 focus:outline-none"
-                  />
-                  <ErrorMessage
-                    name="departureDate"
-                    component="div"
-                    className="text-xs text-red-600 font-semibold"
-                  />
-                </div>
-                <FieldIcon icon={CalendarDays} />
-              </div>
-
-              {/* تاريخ العودة */}
-              <div className="flex flex-1 items-center justify-between gap-4 p-4">
-                <div className="flex w-full flex-col gap-1.5">
-                  <label
-                    htmlFor="returnDate"
-                    className="font-bold text-sm text-slate-800"
-                  >
-                    تاريخ العودة
-                  </label>
-                  <Field
-                    type="date"
-                    name="returnDate"
-                    id="returnDate"
-                    min={minReturnDate}
-                    className="w-full bg-transparent text-slate-600 focus:outline-none"
-                  />
-                  <ErrorMessage
-                    name="returnDate"
-                    component="div"
-                    className="text-xs text-red-600 font-semibold"
-                  />
-                </div>
-                <FieldIcon icon={CalendarDays} />
+              <div className="relative">
+                <Field
+                  type="text"
+                  name="departureCity"
+                  id="departureCity"
+                  placeholder="مثال: القاهرة"
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                />
+                <ErrorMessage
+                  name="departureCity"
+                  component="div"
+                  className="text-xs text-red-600 font-semibold mt-1"
+                />
               </div>
             </div>
 
-            {/* الصف الثاني: المسافرون */}
-            <div
-              className="
-                w-full rounded-2xl border border-white/50 bg-white/40
-                shadow-xl backdrop-blur-xl
-                flex flex-col md:flex-row
-                divide-y divide-white/50 md:divide-y-0 md:divide-x-reverse
-              "
-            >
-              {/* البالغون */}
-              <div className="flex flex-1 items-center justify-between gap-4 p-4">
-                <div className="flex w-full flex-col gap-1.5">
-                  <label
-                    htmlFor="adults"
-                    className="font-bold text-sm text-slate-800"
-                  >
-                    البالغون
-                  </label>
-                  <Field
-                    type="number"
-                    name="adults"
-                    id="adults"
-                    min="1"
-                    className="w-full bg-transparent text-slate-600 focus:outline-none"
-                  />
-                  <ErrorMessage
-                    name="adults"
-                    component="div"
-                    className="text-xs text-red-600 font-semibold"
-                  />
-                </div>
-                <FieldIcon icon={Users} />
+            {/* Return City */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <p className="text-2xl font-semibold text-white">إلى</p>
+                <PlaneLanding className="text-white" />
               </div>
-
-              {/* الأطفال */}
-              <div className="flex flex-1 items-center justify-between gap-4 p-4">
-                <div className="flex w-full flex-col gap-1.5">
-                  <label
-                    htmlFor="children"
-                    className="font-bold text-sm text-slate-800"
-                  >
-                    الأطفال (2-12 سنة)
-                  </label>
-                  <Field
-                    type="number"
-                    name="children"
-                    id="children"
-                    min="0"
-                    className="w-full bg-transparent text-slate-600 focus:outline-none"
+              <div className="relative">
+                <Field
+                  as="select"
+                  name="returnCity"
+                  id="returnCity"
+                  className="w-full appearance-none border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                >
+                  <option value="" disabled hidden>
+                    اختر وجهة العودة...
+                  </option>
+                  <option value="جدة" className="text-black">
+                    جدة
+                  </option>
+                  <option value="الطائف" className="text-black">
+                    الطائف
+                  </option>
+                  <option value="المدينة" className="text-black">
+                    المدينة
+                  </option>
+                </Field>
+                <svg
+                  className="w-4 h-4 absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 9l-7 7-7-7"
                   />
-                  <ErrorMessage
-                    name="children"
-                    component="div"
-                    className="text-xs text-red-600 font-semibold"
-                  />
-                </div>
-                <FieldIcon icon={Users} />
-              </div>
-
-              {/* كبار السن */}
-              <div className="flex flex-1 items-center justify-between gap-4 p-4">
-                <div className="flex w-full flex-col gap-1.5">
-                  <label
-                    htmlFor="seniors"
-                    className="font-bold text-sm text-slate-800"
-                  >
-                    كبار السن (+65)
-                  </label>
-                  <Field
-                    type="number"
-                    name="seniors"
-                    id="seniors"
-                    min="0"
-                    className="w-full bg-transparent text-slate-600 focus:outline-none"
-                  />
-                  <ErrorMessage
-                    name="seniors"
-                    component="div"
-                    className="text-xs text-red-600 font-semibold"
-                  />
-                </div>
-                <FieldIcon icon={Users} />
+                </svg>
+                <ErrorMessage
+                  name="returnCity"
+                  component="div"
+                  className="text-xs text-red-600 font-semibold mt-1"
+                />
               </div>
             </div>
 
-            {/* زر الإرسال */}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="bg-white bg-opacity-40 text-white px-10 py-3 rounded-full text-lg font-bold transition-all duration-300 shadow-lg hover:shadow-xl disabled:bg-gray-400 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? "جاري البحث..." : "ابحث عن رحلات"}
-            </button>
+            {/* Departure Date */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <p className="text-2xl font-semibold text-white">
+                  تاريخ المغادرة
+                </p>
+                <CalendarDays className="text-white" />
+              </div>
+              <div className="relative">
+                <Field
+                  type="date"
+                  name="departureDate"
+                  id="departureDate"
+                  min={minDepartureDate}
+                  onChange={(e) => {
+                    setFieldValue("departureDate", e.target.value);
+                    setMinReturnDate(e.target.value);
+                  }}
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                />
+                <ErrorMessage
+                  name="departureDate"
+                  component="div"
+                  className="text-xs text-red-600 font-semibold mt-1"
+                />
+              </div>
+            </div>
+
+            {/* Return Date */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <p className="text-2xl font-semibold text-white">
+                  تاريخ العودة
+                </p>
+                <CalendarDays className="text-white" />
+              </div>
+              <div className="relative">
+                <Field
+                  type="date"
+                  name="returnDate"
+                  id="returnDate"
+                  min={minReturnDate}
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                />
+                <ErrorMessage
+                  name="returnDate"
+                  component="div"
+                  className="text-xs text-red-600 font-semibold mt-1"
+                />
+              </div>
+            </div>
+
+            {/* Adults */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <p className="text-2xl font-semibold text-white">البالغون</p>
+                <Users className="text-white" />
+              </div>
+              <div className="relative">
+                <Field
+                  type="number"
+                  name="adults"
+                  id="adults"
+                  min="1"
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                />
+                <ErrorMessage
+                  name="adults"
+                  component="div"
+                  className="text-xs text-red-600 font-semibold mt-1"
+                />
+              </div>
+            </div>
+
+            {/* Children */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <p className="text-2xl font-semibold text-white">
+                  الأطفال (2-12 سنة)
+                </p>
+                <Users className="text-white" />
+              </div>
+              <div className="relative">
+                <Field
+                  type="number"
+                  name="children"
+                  id="children"
+                  min="0"
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                />
+                <ErrorMessage
+                  name="children"
+                  component="div"
+                  className="text-xs text-red-600 font-semibold mt-1"
+                />
+              </div>
+            </div>
+
+            {/* Seniors */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <p className="text-2xl font-semibold text-white">
+                  كبار السن (+65)
+                </p>
+                <Users className="text-white" />
+              </div>
+              <div className="relative">
+                <Field
+                  type="number"
+                  name="seniors"
+                  id="seniors"
+                  min="0"
+                  className="w-full border-0 border-b border-white bg-transparent focus:outline-none focus:ring-0 py-2 pr-8 text-white placeholder:text-white/60"
+                />
+                <ErrorMessage
+                  name="seniors"
+                  component="div"
+                  className="text-xs text-red-600 font-semibold mt-1"
+                />
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="col-span-1 sm:col-span-2 lg:col-span-4 flex justify-center pt-6">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="px-8 py-3 bg-white/20 backdrop-blur-md text-white text-lg font-semibold rounded-xl border border-white/30 hover:bg-white/30 transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "جاري البحث..." : "ابحث عن رحلات"}
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
