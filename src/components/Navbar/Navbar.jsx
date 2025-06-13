@@ -51,64 +51,66 @@ export default function Navbar() {
         </ul>
 
         <div className="order-3 cursor-pointer">
-          <Link to={"/"}><Logo /></Link>
+          <Link to={"/"}>
+            <Logo />
+          </Link>
         </div>
       </nav>
 
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-black text-white shadow-xl transform transition-transform duration-300 ease-in-out
-          ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-        `}
+        className={`fixed top-0 left-0 h-full w-64 bg-white bg-opacity-25 backdrop-blur-md text-white shadow-xl transform transition-transform duration-300 ease-in-out
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+      `}
         style={{ zIndex: 1000 }}
       >
-        <div className="flex justify-between items-center p-4 border-b border-gray-700">
+        <div className="flex justify-between items-center p-4 border-b border-white/30">
           <Logo />
           <button
             onClick={() => setSidebarOpen(false)}
             aria-label="Close sidebar"
-            className="p-2 rounded-md hover:bg-gray-700 transition"
+            className="px-4 py-2 bg-white/20 backdrop-blur-md text-white text-lg font-semibold rounded-xl border border-white/30 hover:bg-white/30 transition duration-200"
           >
             <X size={28} color="white" />
           </button>
         </div>
 
-        <ul className="flex flex-col gap-8 p-6 text-lg font-medium">
-          <li className="flex items-center gap-3  transition cursor-pointer">
-            <Plane size={24} />
+        <ul className="flex flex-col gap-8 p-6 text-lg font-semibold">
+          <li className="flex items-center gap-3 transition hover:bg-white/10 rounded-lg p-2 cursor-pointer">
+            <Plane size={24} color="white" />
             <Link
               to="/Flight"
               onClick={handleLinkClick}
-              className="hover:underline"
+              className="text-white hover:underline"
             >
               حجز الطيران والفنادق
             </Link>
           </li>
-          <li className="flex items-center gap-3  transition cursor-pointer">
-            <Car size={24} />
+          <li className="flex items-center gap-3 transition hover:bg-white/10 rounded-lg p-2 cursor-pointer">
+            <Car size={24} color="white" />
             <Link
               to="/limousine"
               onClick={handleLinkClick}
-              className="hover:underline"
+              className="text-white hover:underline"
             >
               حجز ليموزين
             </Link>
           </li>
-          <li className="flex items-center gap-3  transition cursor-pointer">
-            <Phone size={24} />
+          <li className="flex items-center gap-3 transition hover:bg-white/10 rounded-lg p-2 cursor-pointer">
+            <Phone size={24} color="white" />
             <Link
               to="/contact"
               onClick={handleLinkClick}
-              className="hover:underline"
+              className="text-white hover:underline"
             >
               تواصل معنا
             </Link>
           </li>
-          <li className="flex items-center gap-3  transition cursor-pointer">
-            <Info size={24} />
+          <li className="flex items-center gap-3 transition hover:bg-white/10 rounded-lg p-2 cursor-pointer">
+            <Info size={24} color="white" />
             <Link
               to="/aboutUs"
               onClick={handleLinkClick}
-              className="hover:underline"
+              className="text-white hover:underline"
             >
               عننا
             </Link>
