@@ -1,4 +1,4 @@
-import Image from "../../assets/fly.png";
+import Image from "../../assets/4777100_Man_Businessman_3840x2160.mp4";
 import AboutUsSection from "../AboutUsSection/AboutUsSection";
 import LimousineSection from "../Booklimousine/limousineSection";
 import HeroSection from "../Herocomponents/HeroSection";
@@ -43,7 +43,7 @@ export default function FlightReservation() {
   return (
     <>
       <HeroSection
-        backgroundType="image"
+        backgroundType="video"
         backgroundSrc={Image}
         title="رحلات داخلية لمكة والمدينة بأفضل الأسعار"
         description="سافر بأمان وراحة مع أفضل شركات الطيران السعودية."

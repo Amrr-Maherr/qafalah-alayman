@@ -38,6 +38,9 @@ export default function HotelCard({ hotel }) {
         <div className="absolute top-3 right-3 bg-white bg-opacity-20 text-white font-bold px-3 py-1 rounded-full shadow-md z-20">
           ⭐ {hotel.rating}
         </div>
+        <div className="absolute top-3 left-3 bg-white bg-opacity-20 text-white font-bold px-3 py-1 rounded-full shadow-md z-20">
+          {hotel.pricePerNight}
+        </div>
 
         {/* Text content at bottom */}
         <div className="absolute bottom-0 w-full p-5 bg-white bg-opacity-20 text-white text-right z-10">

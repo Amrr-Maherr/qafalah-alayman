@@ -9,10 +9,14 @@ import HomeBox from "./HomeBox";
 export default function HomeOverLay() {
   // home data
   const Data = [
-    { title: "حجز ليموزين للمطار", icon: imgOne, link: "/limousine" },
+    { title: "حجز ليموزين للمطار", icon: imgOne, link: "/Flight" },
     { title: "عمره بالحافله", icon: imgTwo, link: "" },
-    {title: "حجز طيران و فنادق مكة و المدينة",icon: imgThree,link: "/Flight",},
-    { title: "حجز فنادق مكة و المدينة", icon: imgFour, link: "/Hotel" },
+    {
+      title: "حجز طيران و فنادق مكة و المدينة",
+      icon: imgThree,
+      link: "/Flight",
+    },
+    { title: "حجز فنادق مكة و المدينة", icon: imgFour, link: "/Flight" },
     { title: "سله المتجر الالكتروني", icon: imgFive, link: "" },
   ];
 
