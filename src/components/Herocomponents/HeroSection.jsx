@@ -11,7 +11,12 @@ export default function HeroSection({
   return (
     <>
       <Navbar />
-      <section className="h-screen relative flex items-center justify-center mx-[19px] my-3 rounded-[80px] overflow-hidden">
+      <section
+        className="h-screen sm:h-[140dvh] relative flex items-center justify-center mx-[19px] my-3 
+  rounded-[80px] overflow-hidden 
+  md:rounded-[80px] md:overflow-hidden 
+  rounded-none overflow-visible"
+      >
         {/* Background */}
         {backgroundType === "video" ? (
           <video
@@ -32,7 +37,7 @@ export default function HeroSection({
         )}
 
         {/* Overlay and Content */}
-        <div className="absolute inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-between flex-col p-8 text-center rounded-[80px]">
+        <div className="absolute inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-between flex-col p-8 text-center md:rounded-[80px]">
           <div className="h-full flex items-end justify-center flex-col w-full">
             <motion.h2
               initial={{ opacity: 0, y: -50 }}
