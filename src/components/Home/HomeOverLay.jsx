@@ -9,7 +9,7 @@ import HomeBox from "./HomeBox";
 export default function HomeOverLay() {
   // home data
   const Data = [
-    { title: "حجز ليموزين للمطار", icon: imgOne, link: "/Flight" },
+    { title: "حجز ليموزين للمطار", icon: imgOne, link: "/limousine" },
     { title: "عمره بالحافله", icon: imgTwo, link: "" },
     {
       title: "حجز طيران و فنادق مكة و المدينة",
