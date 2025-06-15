@@ -12,7 +12,7 @@ export default function HeroSection({
     <>
       <Navbar />
       <section
-        className="h-screen sm:h-[140dvh] relative flex items-center justify-center mx-[19px] my-3 
+        className="h-[150dvh] md:h-[100dvh] relative flex items-center justify-center mx-[19px] my-3 
   rounded-[80px] overflow-hidden 
   md:rounded-[80px] md:overflow-hidden 
   rounded-none overflow-visible"

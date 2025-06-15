@@ -1,5 +1,5 @@
 import { FaPaperPlane, FaBullseye } from "react-icons/fa";
-import Image from "../../assets/about.png";
+import Image from "../../assets/Group 15.png";
 
 export default function OurMessage() {
   return (
