@@ -1,24 +1,8 @@
 import React from "react";
-import footerLogo from "../../assets/footerLogo.png";
-import {
-  FaFacebook,
-  FaInstagramSquare,
-  FaYoutube,
-  FaWhatsapp,
-} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
-import Footer from "../Footer/Footer";
 
 function CustomerProtection() {
-  // قائمة أرقام الواتساب
-  const whatsappNumbers = [
-    { number: "+966123456789", label: "خدمة العملاء 1" },
-    { number: "+966987654321", label: "خدمة العملاء 2" },
-    { number: "+966555555555", label: "الدعم الفني" },
-  ];
-
   // قائمة مبادئ حماية العملاء
   const principles = [
     {
@@ -49,7 +33,7 @@ function CustomerProtection() {
   ];
 
   return (
-    <div className="customer-protection bg-[#FBF5EA] min-h-screen py-8">
+    <div className="customer-protection bg-gray-200 min-h-screen py-8">
       <div className="container mx-auto px-4">
         {/* العنوان الرئيسي */}
         <motion.div
@@ -60,7 +44,7 @@ function CustomerProtection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-[32px] md:text-[40px] font-bold text-[#B38124]">
+          <h1 className="text-[32px] md:text-[40px] font-bold text-black">
             مبادئ حماية العملاء
           </h1>
           <p className="text-[#4D4D4D] text-[18px] md:text-[20px] mt-4">
@@ -81,9 +65,9 @@ function CustomerProtection() {
           {principles.map((principle, index) => (
             <div
               key={index}
-              className="principle-card bg-white p-6 rounded-[20px] shadow-md"
+              className="principle-card bg-white bg-opacity-20 p-6 rounded-[20px] shadow-lg"
             >
-              <h3 className="text-[20px] font-bold text-[#B38124] mb-3">
+              <h3 className="text-[20px] font-bold text-black mb-3">
                 {principle.title}
               </h3>
               <p className="text-[#4D4D4D] text-[16px]">

@@ -26,7 +26,7 @@ function Licenses() {
   ];
 
   return (
-    <div className="licenses-page bg-[#FBF5EA] min-h-screen py-8">
+    <div className="licenses-page bg-gray-200 min-h-screen py-8">
       <div className="container mx-auto px-4">
         {/* العنوان الرئيسي */}
         <motion.div
@@ -37,7 +37,7 @@ function Licenses() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-[32px] md:text-[40px] font-bold text-[#B38124]">
+          <h1 className="text-[32px] md:text-[40px] font-bold text-black">
             التراخيص
           </h1>
           <p className="text-[#4D4D4D] text-[18px] md:text-[20px] mt-4">
@@ -59,9 +59,9 @@ function Licenses() {
           {licenses.map((license, index) => (
             <div
               key={index}
-              className="license-card bg-white p-6 rounded-[20px] shadow-md"
+              className="license-card bg-white bg-opacity-20 p-6 rounded-[20px] shadow-lg"
             >
-              <h3 className="text-[20px] font-bold text-[#B38124] mb-3">
+              <h3 className="text-[20px] font-bold text-black mb-3">
                 {license.title}
               </h3>
               <p className="text-[#4D4D4D] text-[16px] mb-2">

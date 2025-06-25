@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function PrivacyPolicy() {
-
   // قائمة سياسات الخصوصية
   const privacyPolicies = [
     {
@@ -41,8 +40,15 @@ function PrivacyPolicy() {
     },
   ];
 
+  // قائمة أرقام الواتساب
+  const whatsappNumbers = [
+    { number: "+0509861516", label: "واتس اب" },
+    { number: "+0509861516", label: "واتس اب" },
+    { number: "+0549484927", label: "واتس اب" },
+  ];
+
   return (
-    <div className="privacy-policy bg-[#FBF5EA] min-h-screen py-8">
+    <div className="privacy-policy bg-gray-200 min-h-screen py-8">
       <div className="container mx-auto px-4">
         {/* العنوان الرئيسي */}
         <motion.div
@@ -53,7 +59,7 @@ function PrivacyPolicy() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-[32px] md:text-[40px] font-bold text-[#B38124]">
+          <h1 className="text-[32px] md:text-[40px] font-bold text-black">
             سياسات الخصوصية
           </h1>
           <p className="text-[#4D4D4D] text-[18px] md:text-[20px] mt-4">
@@ -74,9 +80,9 @@ function PrivacyPolicy() {
           {privacyPolicies.map((policy, index) => (
             <div
               key={index}
-              className="policy-card bg-white p-6 rounded-[20px] shadow-md"
+              className="policy-card bg-white bg-opacity-20 p-6 rounded-[20px] shadow-lg"
             >
-              <h3 className="text-[20px] font-bold text-[#B38124] mb-3">
+              <h3 className="text-[20px] font-bold text-black mb-3">
                 {policy.title}
               </h3>
               <p className="text-[#4D4D4D] text-[16px]">{policy.description}</p>
