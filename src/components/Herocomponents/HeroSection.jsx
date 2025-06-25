@@ -36,7 +36,7 @@ export default function HeroSection({
 
       {/* Overlay and Content */}
       <div className="absolute inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-between flex-col p-8 text-center">
-        <div className="h-full flex items-end justify-center flex-col w-full">
+        <div className="h-full flex items-center justify-center flex-col w-full">
           <motion.h2
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
