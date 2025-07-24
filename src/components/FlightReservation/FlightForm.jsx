@@ -65,7 +65,7 @@ export default function FlightForm() {
         fontSize: "16px",
       },
     });
-    window.location.reload();
+    navigate("/Hotel");
     setSubmitting(false);
   };
 

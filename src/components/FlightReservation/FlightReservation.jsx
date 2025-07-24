@@ -49,7 +49,7 @@ export default function FlightReservation() {
         description="سافر بأمان وراحة مع أفضل شركات الطيران السعودية."
         buttonText="اكتشف الآن"
       >
-        {Data ? <HotelForm /> : <FlightForm />}
+        <FlightForm />
       </HeroSection>
       <HotelSection />
       <LimousineSection />

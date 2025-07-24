@@ -23,7 +23,7 @@ export default function Navbar() {
           <Menu size={24} />
         </button>
 
-        <ul className="hidden md:flex gap-10 flex-row-reverse order-2 mx-auto font-semibold text-lg">
+        <ul className="hidden text-white md:flex gap-10 flex-row-reverse order-2 mx-auto font-semibold text-lg">
           <li className="flex items-center gap-2  transition cursor-pointer">
             <Plane size={22} />
             <Link to="/Flight" className="hover:underline">
