@@ -54,7 +54,6 @@ export default function FlightReservation() {
       <HotelSection />
       <LimousineSection />
       <AboutUsSection
-        bgColor="bg-gray-200"
         data={aboutUsData}
         title="لماذا تختار منصتنا !"
         description="استمتع مع اقوى الخدمات و افضل الباقات من قافلة الايمان"

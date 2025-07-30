@@ -16,7 +16,7 @@ function Footer() {
 
   return (
     <motion.div
-      className="footer py-4 md:py-6 bg-gray-200"
+      className="footer py-4 md:py-6 bg-gray-700"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -33,10 +33,10 @@ function Footer() {
           viewport={{ once: true }}
         >
           <div className="footerInfo">
-            <h2 className="text-[24px] leading-[150%] font-bold text-black">
+            <h2 className="text-[24px] leading-[150%] font-bold text-white">
               سجل دخولك الي موقعنا...
             </h2>
-            <p className="text-[#4D4D4D] text-[18px] font-normal text-end">
+            <p className="text-white text-[18px] font-normal text-end">
               لتبقي علي اطلاع علي جميع عروضنا باستمرار!
             </p>
           </div>
@@ -48,7 +48,7 @@ function Footer() {
               type="email"
               placeholder="أدخل ايميلك"
             />
-            <button className="footerSubscribeBtn py-[10px] px-[24px] rounded-[60px] bg-white text-black bg-opacity-20 shadow-lg">
+            <button className="footerSubscribeBtn py-[10px] px-[24px] rounded-[60px] text-white bg-black bg-opacity-20 shadow-lg">
               <a href="#">أشترك الان</a>
             </button>
           </div>
@@ -70,12 +70,12 @@ function Footer() {
                 src={footerLogo}
                 alt="footer logo"
               />
-              <p className="text-[16px] text-center md:text-start text-[#4D4D4D]">
+              <p className="text-[16px] text-center md:text-start text-white">
                 اختر من بين حلولنا التمويلية المرنة، واستمتع بتجربة امتلاك سيارة
                 تناسب ميزانيتك وأسلوب حياتك
               </p>
             </div>
-            <div className="footerSocialMedia text-black my-3 flex justify-center md:justify-start items-center gap-1">
+            <div className="footerSocialMedia text-white my-3 flex justify-center md:justify-start items-center gap-1">
               <a href="#" target="_blank">
                 <FaFacebook size={24} />
               </a>
@@ -98,33 +98,30 @@ function Footer() {
           {/* روابط */}
           <div className="footerLinks w-full md:w-2/3 flex md:flex-row flex-col gap-5 md:gap-0 items-start justify-between">
             <div className="companyLinks text-center md:w-1/3 w-full">
-              <h2 className="text-[18px] font-bold text-black">الشركه</h2>
+              <h2 className="text-[18px] font-bold text-white">الشركه</h2>
               <ul className="list-none">
                 <li>
-                  <Link className="text-[#4D4D4D] text-[16px]" to={"/Flight"}>
+                  <Link className="text-white text-[16px]" to={"/Flight"}>
                     رحلات الطيران
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="text-[#4D4D4D] text-[16px]"
-                    to={"/limousine"}
-                  >
+                  <Link className="text-white text-[16px]" to={"/limousine"}>
                     رحلات ليموزين
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-[#4D4D4D] text-[16px]" to={"/Hotel"}>
+                  <Link className="text-white text-[16px]" to={"/Hotel"}>
                     حجز الفنادق
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-[#4D4D4D] text-[16px]" to={"/aboutUs"}>
+                  <Link className="text-white text-[16px]" to={"/aboutUs"}>
                     عن قافلة الايمان
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-[#4D4D4D] text-[16px]" to={"/contact"}>
+                  <Link className="text-white text-[16px]" to={"/contact"}>
                     تواصل معنا
                   </Link>
                 </li>
@@ -132,11 +129,11 @@ function Footer() {
             </div>
 
             <div className="policies text-center md:w-1/3 w-full">
-              <h2 className="text-[18px] font-bold text-black">السياسات</h2>
+              <h2 className="text-[18px] font-bold text-white">السياسات</h2>
               <ul className="list-none">
                 <li>
                   <Link
-                    className="no-underline text-[16px] text-[#4D4D4D]"
+                    className="no-underline text-[16px] text-white"
                     to="/PrivacyPolicy"
                   >
                     سياسات الخصوصيه
@@ -144,7 +141,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="no-underline text-[16px] text-[#4D4D4D]"
+                    className="no-underline text-[16px] text-white"
                     to="/Licenses"
                   >
                     التراخيص
@@ -154,13 +151,13 @@ function Footer() {
             </div>
 
             <div className="support text-center md:w-1/3 w-full">
-              <h2 className="text-[18px] font-bold text-black">
+              <h2 className="text-[18px] font-bold text-white">
                 المساعدة والدعم
               </h2>
               <ul className="list-none">
                 <li>
                   <Link
-                    className="no-underline text-[16px] text-[#4D4D4D]"
+                    className="no-underline text-[16px] text-white"
                     to="/contact"
                   >
                     طلب أو شكوي
@@ -168,7 +165,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="no-underline text-[16px] text-[#4D4D4D]"
+                    className="no-underline text-[16px] text-white"
                     to="/CustomerProtection"
                   >
                     مبادئ حماية العملاء
@@ -186,7 +183,7 @@ function Footer() {
             href={`https://wa.me/${contact.number.replace("+", "")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="footerContactBtn rounded-[60px] py-[10px] px-[24px] bg-white bg-opacity-20 shadow-lg text-black flex items-center gap-1"
+            className="footerContactBtn rounded-[60px] py-[10px] px-[24px] bg-white bg-opacity-20 shadow-lg text-white flex items-center gap-1"
           >
             {contact.label}{" "}
             <PiPhoneCall size={24} style={{ transform: "rotate(270deg)" }} />
@@ -194,7 +191,7 @@ function Footer() {
         ))}
       </div>
       <div className="w-full border-t border-[#E0E0E0] mt-10 pt-4">
-        <p className="text-center text-[#4D4D4D] text-sm md:text-base">
+        <p className="text-center text-white text-sm md:text-base">
           جميع الحقوق محفوظة © {new Date().getFullYear()} —
           <a
             href="https://neon-code-nest.vercel.app/"

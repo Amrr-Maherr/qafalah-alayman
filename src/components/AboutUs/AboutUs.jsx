@@ -40,7 +40,6 @@ function AboutUs() {
       <OurMessage />
       <About />
       <AboutUsSection
-        bgColor="#FCF8F2"
         data={aboutUsData}
         title="كيف تتواصل معنا !"
         description="لا تتردد في التواصل معنا عبر القنوات التالية. فريقنا جاهز للرد على جميع استفساراتك في أسرع وقت ممكن."

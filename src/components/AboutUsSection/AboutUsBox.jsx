@@ -1,6 +1,6 @@
 export default function AboutUsBox({ icon, title, text }) {
   return (
-    <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+    <div className="bg-white backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-lg text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
       <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-white/20 backdrop-blur-sm shadow-lg">
         <span className="text-4xl text-gray-600">{icon}</span>
       </div>

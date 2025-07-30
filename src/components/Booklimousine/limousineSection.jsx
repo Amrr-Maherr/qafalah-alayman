@@ -99,7 +99,7 @@ export default function LimousineSection() {
   ];
 
   return (
-    <section className="py-12  my-5" dir="rtl">
+    <section className="py-12  bg-black" dir="rtl">
       <SectionTitle title="افضل خدمات الليموزين" />
       <div className="w-full px-4">
         <Slider>

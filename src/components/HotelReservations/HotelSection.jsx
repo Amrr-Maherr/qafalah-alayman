@@ -200,7 +200,7 @@ export default function HotelSection() {
       
       
   return (
-    <section className="py-12 my-5">
+    <section className="py-12  bg-black">
       <SectionTitle title="تمتع مع مجموعة من افضل الفنادق" />
       <div className="w-full px-4">
         <Slider>

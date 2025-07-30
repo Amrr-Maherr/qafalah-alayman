@@ -41,50 +41,48 @@ export default function ContactUsPage() {
         description="نعمل باستمرار لجعل تجربتك من خلال خدماتنا أسهل, سنقوم بالرد على رسالتكم في اقرب وقت ممكن."
         buttonText="اكتشف الآن"
       />
-      <section className="bg-white py-20 px-4">
+      <section className="bg-black py-20 px-4">
         <div className="container mx-auto  py-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold text-gray-800">
-              تواصل معنا
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-4xl font-extrabold text-white">تواصل معنا</h2>
+            <p className="mt-4 text-lg text-white">
               هل لديك سؤال أو استفسار؟ نحن هنا للمساعدة.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="text-right">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              <h3 className="text-2xl font-bold text-white mb-6">
                 معلومات الاتصال
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-8">
+              <p className="text-white leading-relaxed mb-8">
                 لا تتردد في التواصل معنا عبر القنوات التالية. فريقنا جاهز للرد
                 على جميع استفساراتك في أسرع وقت ممكن.
               </p>
               <div className="space-y-6">
                 <div className="flex items-center justify-end gap-4">
-                  <span className="font-semibold text-gray-700">
+                  <span className="font-semibold text-white">
                     الرياض، المملكة العربية السعودية
                   </span>
-                  <FaMapMarkerAlt className="text-2xl text-gray-800" />
+                  <FaMapMarkerAlt className="text-2xl text-white" />
                 </div>
                 <div className="flex items-center justify-end gap-4">
                   <a
                     href="tel:+966112345678"
-                    className="font-semibold text-gray-800  transition-colors"
+                    className="font-semibold text-white  transition-colors"
                   >
                     +966 11 234 5678
                   </a>
-                  <FaPhone className="text-2xl text-gray-800" />
+                  <FaPhone className="text-2xl text-white" />
                 </div>
                 <div className="flex items-center justify-end gap-4">
                   <a
                     href="mailto:support@example.com"
-                    className="font-semibold text-gray-700 transition-colors"
+                    className="font-semibold text-white transition-colors"
                   >
                     support@example.com
                   </a>
-                  <FaEnvelope className="text-2xl text-gray-800" />
+                  <FaEnvelope className="text-2xl text-white" />
                 </div>
               </div>
 
@@ -104,7 +102,7 @@ export default function ContactUsPage() {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <div className="bg-gray-700 p-8 rounded-2xl shadow-lg">
               <Formik
                 initialValues={{
                   fullName: "",
@@ -117,11 +115,10 @@ export default function ContactUsPage() {
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                   const serviceID = "service_n94qirq";
                   const templateID = "template_odysqen";
-                  const userID = "jGGb9ECGdgNciOnIL"; // مفتاحك العام من EmailJS
-
+                  const userID = "jGGb9ECGdgNciOnIL";
                   const templateParams = {
                     to_name: "فريق الدعم",
-                    to_email: "amrr.maherr24@gmail.com", // الإيميل اللي تستقبل عليه الرسائل
+                    to_email: "amrr.maherr24@gmail.com",
                     from_name: values.fullName,
                     from_email: values.email,
                     from_phone: values.phone,
@@ -149,7 +146,7 @@ export default function ContactUsPage() {
                     <div>
                       <label
                         htmlFor="fullName"
-                        className="block mb-2 text-sm font-bold text-gray-700"
+                        className="block mb-2 text-sm font-bold text-white"
                       >
                         الاسم الكامل
                       </label>
@@ -157,7 +154,7 @@ export default function ContactUsPage() {
                         type="text"
                         name="fullName"
                         id="fullName"
-                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
                       />
                       <ErrorMessage
                         name="fullName"
@@ -169,7 +166,7 @@ export default function ContactUsPage() {
                     <div>
                       <label
                         htmlFor="email"
-                        className="block mb-2 text-sm font-bold text-gray-700"
+                        className="block mb-2 text-sm font-bold text-white"
                       >
                         البريد الإلكتروني
                       </label>
@@ -177,7 +174,7 @@ export default function ContactUsPage() {
                         type="email"
                         name="email"
                         id="email"
-                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 "
                       />
                       <ErrorMessage
                         name="email"
@@ -189,7 +186,7 @@ export default function ContactUsPage() {
                     <div>
                       <label
                         htmlFor="phone"
-                        className="block mb-2 text-sm font-bold text-gray-700"
+                        className="block mb-2 text-sm font-bold text-white"
                       >
                         رقم الهاتف (اختياري)
                       </label>
@@ -197,14 +194,14 @@ export default function ContactUsPage() {
                         type="text"
                         name="phone"
                         id="phone"
-                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 "
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="subject"
-                        className="block mb-2 text-sm font-bold text-gray-700"
+                        className="block mb-2 text-sm font-bold text-white"
                       >
                         الموضوع
                       </label>
@@ -212,7 +209,7 @@ export default function ContactUsPage() {
                         type="text"
                         name="subject"
                         id="subject"
-                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 "
                       />
                       <ErrorMessage
                         name="subject"
@@ -224,7 +221,7 @@ export default function ContactUsPage() {
                     <div>
                       <label
                         htmlFor="message"
-                        className="block mb-2 text-sm font-bold text-gray-700"
+                        className="block mb-2 text-sm font-bold text-white"
                       >
                         رسالتك
                       </label>
@@ -233,7 +230,7 @@ export default function ContactUsPage() {
                         name="message"
                         id="message"
                         rows="5"
-                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
                       />
                       <ErrorMessage
                         name="message"

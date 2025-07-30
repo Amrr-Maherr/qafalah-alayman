@@ -2,7 +2,7 @@ import Image from "../../assets/Rectangle 440.png";
 export default function About() {
   return (
     <>
-      <section className="bg-gray-200 py-12 my-5">
+      <section className="bg-black text-white py-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* الصورة على الشمال */}
@@ -16,11 +16,11 @@ export default function About() {
 
             {/* النص والزرار على اليمين */}
             <div className="md:w-1/2 text-end">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              <h2 className="text-3xl font-bold text-white mb-4">
                 اعتمر وأنت راضِ عن رحلتك ,, لا تحمل هم البحث عن رحلات مريحة
                 بأسعار مميزة
               </h2>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-white mb-6 leading-relaxed">
                 فنحن نسخر خبراتنا ومواردنا لتوفير أفضل الاختيارات وابتكار أفضل
                 الحلول لتيسير أداء المناسك وتحسين ظروف السفر والإقامة للحفاظ على
                 ذهن صاف وقلب مطمئن .. نتمنى لكم رحلة سعيدة وطاعة جديدة
