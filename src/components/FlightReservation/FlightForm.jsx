@@ -3,7 +3,15 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { PlaneTakeoff, PlaneLanding, CalendarDays, X } from "lucide-react";
+import {
+  PlaneTakeoff,
+  PlaneLanding,
+  CalendarDays,
+  X,
+  Plane,
+  Clock,
+  DollarSign,
+} from "lucide-react";
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -39,17 +47,18 @@ export default function FlightForm() {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      // تحويل اسم المدينة إلى الإنجليزية
       const departure = values.departureCity;
       const arrival = cityMap[values.arrivalCity] || values.arrivalCity;
       const departure_date = values.arrivalDate;
+      const api_key = "W65]}f$degbr~7@D";
 
-      // إنشاء URL مع المعاملات
       const url = `https://priceapi.org.in/api/flight_price.php?departure=${encodeURIComponent(
         departure
       )}&arrival=${encodeURIComponent(
         arrival
-      )}&departure_date=${encodeURIComponent(departure_date)}`;
+      )}&departure_date=${encodeURIComponent(
+        departure_date
+      )}&api_key=${encodeURIComponent(api_key)}`;
 
       const response = await fetch(url);
       if (!response.ok) {
@@ -57,12 +66,12 @@ export default function FlightForm() {
       }
       const data = await response.json();
 
-      // تخزين البيانات وعرض الـ Modal
       setResponseData(data);
       setIsModalOpen(true);
+      console.log(data);
 
-      // حفظ البيانات في localStorage
       localStorage.setItem("flightBooking", JSON.stringify(values));
+
       toast.success("تم جلب بيانات الرحلة بنجاح!", {
         duration: 4000,
         position: "top-center",
@@ -73,9 +82,6 @@ export default function FlightForm() {
           fontSize: "16px",
         },
       });
-
-      // التنقل إلى صفحة الحجز
-      setTimeout(() => navigate("/Hotel"), 2000);
     } catch (error) {
       toast.error(error.message || "حدث خطأ أثناء الاتصال بالسيرفر", {
         duration: 4000,
@@ -149,14 +155,14 @@ export default function FlightForm() {
                   <option value="" disabled hidden>
                     اختر وجهة الوصول...
                   </option>
-                  <option value="جدة" className="text-black">
-                    جدة
+                  <option value="Jeddah" className="text-black">
+                    Jeddah
                   </option>
-                  <option value="الطائف" className="text-black">
-                    الطائف
+                  <option value="Taif" className="text-black">
+                    Taif
                   </option>
-                  <option value="المدينة" className="text-black">
-                    المدينة
+                  <option value="Medina" className="text-black">
+                    Medina
                   </option>
                 </Field>
                 <svg
@@ -220,41 +226,140 @@ export default function FlightForm() {
 
       {/* Modal for Server Response */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="max-w-[600px] w-full bg-white bg-opacity-25 backdrop-blur-md rounded-3xl p-6 text-right relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+          <div className="max-w-[700px] w-full bg-white bg-opacity-25 backdrop-blur-md rounded-3xl p-8 text-right relative max-h-[75vh] overflow-y-auto">
+            {/* زر الإغلاق */}
             <button
               onClick={closeModal}
-              className="absolute top-4 left-4 text-white hover:text-gray-300"
+              className="absolute top-4 left-4 text-white hover:text-gray-300 transition-colors duration-200"
+              aria-label="إغلاق النافذة"
             >
-              <X size={24} />
+              <X size={28} />
             </button>
-            <h2 className="text-2xl font-semibold text-white mb-4">
-              تفاصيل الرحلة
+
+            {/* عنوان المودال */}
+            <h2 className="text-3xl font-bold text-white mb-6 border-b border-white/20 pb-2">
+              الرحلات المتاحة
             </h2>
-            {responseData ? (
-              <div className="space-y-2 text-white">
-                <p>
-                  <strong>الوجهة:</strong>{" "}
-                  {responseData.departure || "غير متوفر"} إلى{" "}
-                  {responseData.arrival || "غير متوفر"}
-                </p>
-                <p>
-                  <strong>تاريخ الوصول:</strong>{" "}
-                  {responseData.departure_date || "غير متوفر"}
-                </p>
-                <p>
-                  <strong>السعر:</strong>{" "}
-                  {responseData.price
-                    ? `${responseData.price} ريال`
-                    : "غير متوفر"}
-                </p>
-                <p>
-                  <strong>شركة الطيران:</strong>{" "}
-                  {responseData.airline || "غير متوفر"}
-                </p>
+
+            {/* عرض الرحلات أو رسالة عدم وجود بيانات */}
+            {responseData?.data?.flights?.length > 0 ? (
+              <div className="space-y-6">
+                {responseData.data.flights.map((flight, index) => (
+                  <div
+                    key={flight.id}
+                    className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:shadow-lg transition-shadow duration-200"
+                  >
+                    {/* رأس الرحلة */}
+                    <div className="flex items-center justify-between border-b border-white/20 pb-2 mb-4">
+                      <h3 className="text-xl font-semibold text-white flex items-center gap-2">
+                        <Plane size={20} /> الرحلة {index + 1}
+                      </h3>
+                      <span className="text-sm text-white bg-white/20 px-3 py-1 rounded-full">
+                        {flight.airline}
+                      </span>
+                    </div>
+
+                    {/* تفاصيل الرحلة */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                      <div>
+                        <p className="text-white flex items-center gap-2">
+                          <PlaneTakeoff size={16} />
+                          <strong className="text-white/80">من:</strong>{" "}
+                          {flight.departure}
+                        </p>
+                        <p className="text-white flex items-center gap-2">
+                          <PlaneLanding size={16} />
+                          <strong className="text-white/80">إلى:</strong>{" "}
+                          {flight.arrival}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-white flex items-center justify-end gap-2">
+                          <Clock size={16} />
+                          <strong className="text-white/80">المدة:</strong>{" "}
+                          {flight.duration}
+                        </p>
+                        <p className="text-white flex items-center justify-end gap-2">
+                          <DollarSign size={16} />
+                          <strong className="text-white/80">السعر:</strong>{" "}
+                          <span className="text-white">{flight.price}</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* تفاصيل المقاطع */}
+                    <div className="bg-white/10 rounded-lg p-4">
+                      <p className="font-semibold text-white mb-2 flex items-center justify-end gap-2">
+                        <Plane size={16} /> تفاصيل المقاطع:
+                      </p>
+                      <div className="space-y-3">
+                        {flight.segments.map((seg, segIndex) => (
+                          <div
+                            key={segIndex}
+                            className="flex items-start justify-between gap-3 text-sm text-white border-b border-white/20 pb-2 last:border-b-0"
+                          >
+                            <span className="text-white flex items-center gap-2">
+                              <Plane size={16} /> {seg.flightNumber}
+                            </span>
+                            <div>
+                              <p>
+                                <strong>من:</strong> {seg.from}{" "}
+                                <strong>إلى:</strong> {seg.to}
+                              </p>
+                              <p>
+                                <strong>الإقلاع:</strong>{" "}
+                                {new Date(seg.departureTime).toLocaleString(
+                                  "ar-SA",
+                                  {
+                                    dateStyle: "medium",
+                                    timeStyle: "short",
+                                  }
+                                )}
+                              </p>
+                              <p>
+                                <strong>الوصول:</strong>{" "}
+                                {new Date(seg.arrivalTime).toLocaleString(
+                                  "ar-SA",
+                                  {
+                                    dateStyle: "medium",
+                                    timeStyle: "short",
+                                  }
+                                )}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* زر الحجز */}
+                    <div className="mt-4 flex justify-end">
+                      <button
+                        className="px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 border border-white/30 transition-colors duration-200"
+                        onClick={() => alert(`حجز الرحلة ${flight.id}`)} // يمكن استبدال هذا بمنطق الحجز الفعلي
+                      >
+                        احجز الآن
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : (
-              <p className="text-white">جاري تحميل البيانات...</p>
+              <div className="text-center py-8">
+                <p className="text-lg text-white mb-4">
+                  لا توجد رحلات متاحة حاليًا
+                </p>
+                <p className="text-sm text-white/80">
+                  حاول تغيير التاريخ أو الوجهة للعثور على رحلات أخرى.
+                </p>
+                <button
+                  onClick={closeModal}
+                  className="mt-4 px-6 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 border border-white/30 transition-colors duration-200"
+                >
+                  إغلاق
+                </button>
+              </div>
             )}
           </div>
         </div>
